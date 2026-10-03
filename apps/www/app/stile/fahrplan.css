@@ -1,0 +1,86 @@
+/* Seite Fahrplan (Präfix ws-fp-). Nur Tokens; Breakpoints wie im Designsystem: 1100, 900, 640, 520 px. */
+
+/* Seitenkopf: die pinke Kachel behält mobil ihren pinken Glow (seite.css setzt dort für alle Kacheln Blau). */
+@media (max-width: 900px) {
+  .ws-unterkopf-kacheln .kachel-gross.ws-fp-kachel-pink { box-shadow: var(--glow-pink); }
+}
+
+/* Der Zeitstrahl bringt eigenen Abstand nach unten mit; die aktuelle Phase ragt ab 901 px abstand-6 hinein. */
+.ws-fp-nach-zeitstrahl { padding-top: var(--abstand-6); }
+@media (max-width: 900px) { .ws-fp-nach-zeitstrahl { padding-top: 0; } }
+
+/* Unter 520 px nimmt seite.css Abschnitten nach einem Abschnitt den oberen Abstand, auch am Wechsel zur grauen
+   Fläche; die Überschrift stieße dann an die Kante. Hier für die beiden Wechsel dieser Seite zurückgesetzt. */
+@media (max-width: 520px) {
+  .ws-abschnitt.ws-fp-module, .ws-abschnitt.ws-fp-nach-flaeche { padding-top: var(--abstand-12); }
+}
+
+/* ---------- Phasen im Detail ---------- */
+.ws-fp-phasen { display: grid; gap: var(--luecke); }
+.ws-fp-phase {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 4fr);
+  gap: var(--abstand-6) var(--abstand-8);
+  padding: var(--abstand-8);
+}
+.ws-fp-phase-kopf { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); min-width: 0; }
+.ws-fp-phase-titel { display: flex; flex-direction: column; gap: var(--abstand-1); font: 700 22px/28px var(--font-sans); letter-spacing: -0.005em; color: var(--text); text-wrap: balance; hyphens: auto; }
+.ws-fp-phase-nr { font: 600 15px/20px var(--font-sans); color: var(--akzent-text); }
+.ws-fp-phase-tags { display: flex; flex-wrap: wrap; gap: var(--abstand-2); }
+.ws-fp-phase-tags .tag, .ws-fp-stufe .tag { white-space: nowrap; }
+
+.ws-fp-teil { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); min-width: 0; }
+.ws-fp-liste { display: grid; gap: var(--abstand-2); padding-left: var(--abstand-5); list-style: disc; font: 500 16px/24px var(--font-sans); color: var(--text); hyphens: auto; overflow-wrap: break-word; }
+.ws-fp-liste li::marker { color: var(--text-2); }
+.ws-fp-text { font: 500 16px/24px var(--font-sans); color: var(--text); hyphens: auto; overflow-wrap: break-word; }
+.ws-fp-link { display: inline-flex; align-items: center; min-height: var(--knopf-hoehe); color: var(--akzent-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.ws-fp-link:hover { text-decoration-thickness: 2px; }
+.ws-fp-hinweis { margin-top: var(--abstand-1); font-size: 15px; line-height: 22px; }
+
+@media (max-width: 1100px) {
+  .ws-fp-phase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ws-fp-phase-kopf { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .ws-fp-phase { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-5); padding: var(--innen-karte); }
+}
+@media (max-width: 520px) {
+  .ws-fp-phase { padding: var(--innen-karte-mobil); }
+  .ws-fp-phase-titel { font-size: 20px; line-height: 26px; }
+}
+
+/* ---------- Was wann kommt: Tabelle ab 901 px, darunter Kartenliste (bis 640 px nach bundle.css, 641 – 900 px
+   zweispaltig, weil vier Textspalten dort zu schmal werden) ---------- */
+@media (min-width: 641px) and (max-width: 900px) {
+  .ws-fp-tabelle { display: none; }
+  .ws-fp-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--luecke); }
+}
+.ws-fp-tabelle table { table-layout: fixed; }
+/* Spalten nach Textmenge: „Zum Start“ trägt am meisten, Ausbau 2 am wenigsten. */
+.ws-fp-spalte-modul { width: 18%; }
+.ws-fp-spalte-start { width: 36%; }
+.ws-fp-spalte-ausbau1 { width: 26%; }
+.ws-fp-spalte-ausbau2 { width: 20%; }
+.ws-fp-tabelle thead th { white-space: normal; vertical-align: bottom; }
+.ws-fp-tabelle tbody th, .ws-fp-tabelle td { vertical-align: top; font-size: 15px; line-height: 22px; hyphens: auto; overflow-wrap: break-word; }
+.ws-fp-tabelle td { color: var(--text); }
+.ws-fp-stufe { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--abstand-1) var(--abstand-2); }
+
+.ws-fp-karten .tabelle-karte { gap: var(--abstand-4); }
+.ws-abschnitt-flaeche .ws-fp-karten .tabelle-karte { background: var(--grund); }
+.ws-fp-karten .tabelle-karte-titel { font-size: 17px; line-height: 24px; }
+.ws-fp-karten .tabelle-karte-daten { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-4); }
+.ws-fp-karte-paar { display: grid; gap: var(--abstand-1); }
+.ws-fp-karten .tabelle-karte-daten dt { font: 600 14px/20px var(--font-sans); }
+.ws-fp-karten .tabelle-karte-daten dd { text-align: left; font: 500 15px/22px var(--font-sans); color: var(--text); hyphens: auto; overflow-wrap: break-word; }
+.ws-fp-fussnote { margin-top: var(--abstand-6); max-width: var(--lesen-max); font-size: 15px; line-height: 22px; }
+@media (max-width: 900px) { .ws-fp-nur-tabelle { display: none; } }
+
+/* ---------- Was nicht kommt ---------- */
+.ws-fp-ohne > li { display: flex; }
+.ws-fp-ohne-karte { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); width: 100%; }
+.ws-fp-ohne-titel { font: 700 20px/26px var(--font-sans); color: var(--text); text-wrap: balance; hyphens: auto; }
+
+@media (forced-colors: active) {
+  .ws-fp-phase, .ws-fp-ohne-karte, .ws-fp-karten .tabelle-karte { outline: 1px solid transparent; }
+}

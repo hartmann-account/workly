@@ -5,6 +5,8 @@ type Props = {
   id?: string;
   titel?: string;
   text?: string;
+  /** Zweiter Link neben dem Knopf; null blendet ihn aus (etwa auf der Seite Fahrplan selbst). */
+  nebenlink?: { to: string; text: string } | null;
 };
 
 /** Abschluss einer Seite: eine Verlaufskarte mit dem Weg zur Warteliste. Einzige Verlaufsfläche ihres Abschnitts. */
@@ -12,6 +14,7 @@ export function WartelisteBand({
   id = "warteliste-band",
   titel = "Die geschlossene Beta beginnt im Juni 2027",
   text = "Trag dich in die Warteliste ein. Wir schreiben dir, sobald Plätze in der Beta frei werden; die Registrierung für alle öffnet im September 2027.",
+  nebenlink = { to: "/fahrplan", text: "Zum Fahrplan" },
 }: Props) {
   return (
     <section className="ws-abschnitt ws-band" aria-labelledby={id}>
@@ -27,9 +30,11 @@ export function WartelisteBand({
             <Link to="/warteliste" className="knopf knopf-weiss knopf-gross">
               Warteliste beitreten
             </Link>
-            <Link to="/fahrplan" className="ws-band-link">
-              Zum Fahrplan
-            </Link>
+            {nebenlink ? (
+              <Link to={nebenlink.to} className="ws-band-link">
+                {nebenlink.text}
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>

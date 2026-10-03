@@ -12,14 +12,14 @@ main:focus { outline: none; }
 .ws-abschnitt-flaeche { background: var(--flaeche); }
 .ws-abschnitt-flaeche + .ws-abschnitt,
 .ws-abschnitt + .ws-abschnitt-flaeche { padding-top: var(--abstand-16); }
-.ws-abschnitt-flaeche .karte { background: var(--grund); }
+.ws-abschnitt-flaeche :is(.karte, .tabelle-karte) { background: var(--grund); }
 
 .ws-abschnitt-kopf { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); max-width: 46em; margin-bottom: var(--abstand-12); }
 .ws-abschnitt-kopf-mitte { align-items: center; margin-inline: auto; text-align: center; }
 .ws-kicker { margin: 0; font: 700 18px/24px var(--font-sans); color: var(--text); }
 .ws-abschnitt-titel { margin: 0; font-family: var(--font-sans); font-weight: 700; font-size: clamp(28px, 2.6vw + 15px, 52px); line-height: 1.24; letter-spacing: -0.01em; color: var(--akzent-text); text-wrap: balance; }
 .ws-lead { margin: 0; max-width: 40em; font: 500 18px/28px var(--font-sans); color: var(--text-2); }
-.ws-text { max-width: var(--lesen-max); font: 400 16px/26px var(--font-sans); color: var(--text); }
+.ws-text { max-width: var(--lesen-max); font: 400 16px/26px var(--font-sans); color: var(--text); overflow-wrap: break-word; }
 .ws-text > * + * { margin-top: var(--abstand-4); }
 .ws-text h2 { margin-top: var(--abstand-12); font: 700 24px/32px var(--font-sans); color: var(--text); }
 .ws-text h3 { margin-top: var(--abstand-8); font: 600 18px/24px var(--font-sans); color: var(--text); }
@@ -79,6 +79,7 @@ main:focus { outline: none; }
   .ws-rahmen { padding-inline: var(--rand-inhalt-mobil); }
   .ws-abschnitt, .ws-abschnitt-flaeche + .ws-abschnitt, .ws-abschnitt + .ws-abschnitt-flaeche { padding-block: var(--abstand-12); }
   .ws-abschnitt + .ws-abschnitt { padding-top: 0; }
+  .ws-abschnitt-flaeche + .ws-abschnitt, .ws-abschnitt + .ws-abschnitt-flaeche { padding-top: var(--abstand-12); }
   .ws-abschnitt-kopf { margin-bottom: var(--abstand-8); }
   .ws-lead { font-size: 17px; line-height: 26px; }
   .ws-seitenkopf { padding-block: var(--abstand-8) var(--abstand-6); }
@@ -110,6 +111,9 @@ main:focus { outline: none; }
   .ws-unterkopf-kacheln { order: -1; display: flex; gap: var(--abstand-3); padding: 0; }
   .ws-unterkopf-kacheln > :nth-child(2n) { transform: none; }
   .ws-unterkopf-kacheln .kachel-gross { --groesse: var(--kachel); box-shadow: var(--glow-blau); }
+  .ws-unterkopf-kacheln .kachel-gross.kachel-pink { box-shadow: var(--glow-pink); }
+  .ws-unterkopf-kacheln .kachel-gross.kachel-violett { box-shadow: var(--glow-violett); }
+  .ws-unterkopf-kacheln .kachel-gross.kachel-grau { box-shadow: none; }
 }
 @media (max-width: 520px) {
   .ws-unterkopf { padding-block: var(--abstand-8) var(--abstand-6); }

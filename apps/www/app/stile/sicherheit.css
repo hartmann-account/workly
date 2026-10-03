@@ -1,0 +1,81 @@
+/* Seite Sicherheit (Präfix ws-si-)
+   Ergänzt bundle.css und seite.css. Nur Tokens; Breakpoints wie im Designsystem: 1100, 900, 640, 520 px. */
+
+/* ---------- Text in Karten und Hinweisen ---------- */
+.ws-si-text { margin: 0; max-width: var(--lesen-max); font: 400 16px/26px var(--font-sans); color: var(--text); overflow-wrap: break-word; hyphens: auto; }
+
+.ws-si-ohne-umbruch { white-space: nowrap; }
+
+/* ---------- Karten mit Symbol, Titel und Text ---------- */
+.ws-si-karte { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.ws-si-karte-kopf { display: flex; align-items: flex-start; gap: var(--abstand-3); }
+.ws-si-karte-kopf .symbol { color: var(--akzent-text); }
+.ws-si-karte-titelzeile { display: flex; flex: 1; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--abstand-2) var(--abstand-3); min-width: 0; }
+.ws-si-karte-titel { min-width: 0; margin: 0; font: 600 18px/24px var(--font-sans); color: var(--text); overflow-wrap: break-word; hyphens: auto; }
+.ws-si-karte .datenliste { margin-top: var(--abstand-1); }
+.ws-si-karte .ws-si-text .tag { margin-left: var(--abstand-1); }
+
+/* Datenlisten in Karten: Bezeichnung so breit wie nötig, auch am Telefon neben dem Wert; Schrift wie in den Tabellen */
+.ws-si-daten { grid-template-columns: max-content minmax(0, 1fr); gap: var(--abstand-2) var(--abstand-4); font-size: 15px; line-height: 22px; }
+.ws-si-daten dd { margin-bottom: 0; }
+
+/* ---------- Tabellen ---------- */
+.ws-si-tabelle .tabelle table { font-size: 15px; line-height: 22px; }
+.ws-si-tabelle .tabelle tbody th { font-size: 15px; line-height: 22px; vertical-align: top; }
+.ws-si-tabelle .tabelle td { vertical-align: top; overflow-wrap: break-word; hyphens: auto; }
+.ws-si-zusatz { display: flex; flex-wrap: wrap; align-items: center; gap: var(--abstand-1) var(--abstand-2); margin-top: var(--abstand-2); color: var(--text-2); }
+
+.ws-si-orte thead th:nth-child(1) { width: 32%; }
+.ws-si-orte thead th:nth-child(2) { width: 44%; }
+.ws-si-ziele thead th:nth-child(1) { width: 36%; }
+.ws-si-ziele thead th:nth-child(2) { width: 38%; }
+
+/* Kartenliste unter 640 px: Werte linksbündig, weil sie ganze Wortgruppen sind; auf grauer Fläche weiße Karten */
+.ws-si-tabelle .tabelle-karte-daten { font-size: 15px; line-height: 22px; }
+.ws-si-tabelle .tabelle-karte-daten dd { text-align: left; }
+.ws-si-tabelle .tabelle-karte-titel { font-size: 16px; line-height: 22px; hyphens: auto; }
+.ws-abschnitt-flaeche .tabelle-karte { background: var(--grund); }
+
+/* ---------- Hinweise unter der Tabelle der Speicherorte ---------- */
+.ws-si-hinweise { margin-top: var(--abstand-12); gap: var(--abstand-8) var(--abstand-12); }
+.ws-si-hinweis { display: flex; flex-direction: column; gap: var(--abstand-2); min-width: 0; }
+.ws-si-hinweis-titel { margin: 0; font: 600 18px/24px var(--font-sans); color: var(--text); }
+
+/* ---------- Sicherungen: Liste links, Ziele rechts ---------- */
+.ws-si-sicherung { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--abstand-12); align-items: start; }
+.ws-si-spalte { display: flex; flex-direction: column; gap: var(--abstand-4); min-width: 0; }
+.ws-si-untertitel { margin: 0; font: 700 22px/28px var(--font-sans); color: var(--text); }
+.ws-si-liste { font: 400 16px/24px var(--font-sans); }
+.ws-si-nach-tabelle { margin-top: var(--abstand-1); }
+
+/* ---------- Barrierefreiheit ---------- */
+.ws-si-ziele-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-3) var(--abstand-12); }
+
+@media (max-width: 1100px) {
+  .ws-si-sicherung { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-12); }
+}
+/* Drei Karten (Standards, Export, Löschung): zwischen 641 und 1100 px zwei Spalten, die dritte über beide */
+@media (max-width: 1100px) and (min-width: 641px) {
+  .ws-si-drei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ws-si-drei > :last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .ws-si-hinweise { gap: var(--abstand-6); margin-top: var(--abstand-8); }
+  .ws-si-ziele-liste { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  /* Flächenwechsel brauchen auch am Telefon Abstand nach oben: seite.css setzt ihn unter 520 px auf 0
+     (.ws-abschnitt + .ws-abschnitt steht dort nach der Ausnahme für Flächen). Gemeldet zur Korrektur in seite.css. */
+  .ws-abschnitt-flaeche + .ws-abschnitt, .ws-abschnitt + .ws-abschnitt-flaeche { padding-top: var(--abstand-12); }
+  /* Lange Bezeichnungen („Datenverlust höchstens“): Bezeichnung über dem Wert */
+  .ws-si-karten-gestapelt .tabelle-karte-daten { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-1); }
+  .ws-si-karten-gestapelt .tabelle-karte-daten dd + dt { margin-top: var(--abstand-2); }
+  .ws-si-karte-titel { font-size: 17px; }
+  .ws-si-untertitel { font-size: 20px; line-height: 26px; }
+  .ws-si-hinweis-titel { font-size: 17px; }
+}
+
+/* Kontrastmodus: Karten der Kartenliste bekommen eine Linie */
+@media (forced-colors: active) {
+  .ws-si-karte, .tabelle-karte { outline: 1px solid transparent; }
+}

@@ -1,0 +1,75 @@
+/* workly Website – Startseite (Präfix ws-st-)
+   Ergänzt bundle.css und seite.css. Nur Tokens; Breakpoints wie im Designsystem: 900, 640, 520 px. */
+
+/* ---------- Held ---------- */
+/* „Aus Mails werden“ passt in 8em nicht ganz; 9em hält die Headline bei drei Zeilen. */
+.ws-st-held .he-titel { max-width: 9em; text-wrap: balance; }
+.ws-st-held-hinweis { margin: calc(var(--abstand-2) * -1) 0 0; font: 500 15px/22px var(--font-sans); color: var(--text-2); }
+
+/* ---------- Dunkle Staffel: ausgeglichene Zeilen, kein einzelnes Wort am Zeilenende ---------- */
+.ws-st-staffel .he-zeile { max-width: 20em; text-wrap: balance; }
+
+/* ---------- Anwendungsfall: drei Schritte, Text neben Abbildung ---------- */
+.ws-st-schritte { display: flex; flex-direction: column; gap: var(--abstand-16); }
+.ws-st-schritt { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: var(--abstand-12); }
+.ws-st-schritt-text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); min-width: 0; }
+.ws-st-nummer { display: inline-grid; place-items: center; width: var(--abstand-8); height: var(--abstand-8); border-radius: var(--radius-eintrag);
+  background: var(--akzent-zart); color: var(--akzent-auf-zart); font: 700 15px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+.ws-st-schritt-titel { margin: 0; font: 700 24px/32px var(--font-sans); letter-spacing: -0.01em; color: var(--text); text-wrap: balance; }
+.ws-st-schritt-text p { margin: 0; max-width: 30em; font: 500 17px/26px var(--font-sans); color: var(--text-2); }
+.ws-st-fall-fussnote { max-width: var(--lesen-max); margin-top: var(--abstand-12); }
+
+/* Abbildungen im Rahmen „Bildschirm“: Karten heben sich vom weißen Rahmen ab, auch auf grauer Fläche.
+   Die Knöpfe sind Bild (inert), deshalb bleiben sie auf dem Telefon klein. */
+.ws-st-abbildung .ws-bildschirm-flaeche .karte { background: var(--flaeche); }
+.ws-st-abbildung .knopf-klein { min-height: var(--knopf-hoehe-klein); }
+.ws-st-abbildung .pe-lesen-betreff { font-size: 20px; line-height: 26px; }
+.ws-st-tag { padding: var(--abstand-5); }
+.ws-st-tag .karte-kopf { margin-bottom: var(--abstand-2); }
+.ws-st-dokument { display: flex; flex-direction: column; gap: var(--abstand-5); }
+
+/* ---------- Assistent ---------- */
+.ws-st-assistent { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: start; gap: var(--abstand-12); }
+.ws-st-assistent-text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-6); min-width: 0; }
+.ws-st-assistent-text .ws-fussnote { margin: 0; max-width: 34em; }
+.ws-st-haken { gap: var(--abstand-3); }
+.ws-st-haken li { font: 500 17px/26px var(--font-sans); }
+.ws-st-haken li::before { top: 3px; }
+
+/* ---------- Speicherort und Ausstieg ---------- */
+.ws-st-orte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--luecke); }
+.ws-st-ort { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); }
+.ws-st-ort > .symbol { color: var(--akzent-text); margin-bottom: var(--abstand-1); }
+.ws-st-ort-titel { margin: 0; font: 700 20px/26px var(--font-sans); color: var(--text); }
+.ws-st-ort p { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--text-2); }
+.ws-st-weiter { margin: var(--abstand-6) 0 0; }
+
+/* ---------- Links mit Pfeil ---------- */
+.ws-st-link { display: inline-flex; align-items: center; gap: var(--abstand-2); min-height: var(--knopf-hoehe); color: var(--akzent-text);
+  font: 600 16px/22px var(--font-sans); text-decoration: none; border-radius: var(--radius-knopf); }
+.ws-st-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Tarife ---------- */
+.ws-st-tarife-weiter { display: flex; justify-content: center; margin: var(--abstand-6) auto 0; }
+
+/* ---------- Mobil ---------- */
+@media (max-width: 900px) {
+  .ws-st-schritte { gap: var(--abstand-12); }
+  .ws-st-schritt { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-6); }
+  /* Einspaltig: Abbildung nicht breiter als eine Lesespalte */
+  .ws-st-abbildung .ws-bildschirm-flaeche { max-width: var(--lesen-max); }
+  .ws-st-assistent { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-8); }
+  .ws-st-orte { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  /* Abstand am Flächenwechsel: seite.css setzt hier padding-top auf 0 (siehe Rückmeldung an die Hauptsitzung) */
+  main .ws-abschnitt:is(.ws-st-fall, .ws-st-assistent-abschnitt, .ws-st-speicherort, .ws-st-tarife) { padding-top: var(--abstand-12); }
+  .ws-st-schritte { gap: var(--abstand-8); }
+  .ws-st-schritt { gap: var(--abstand-4); }
+  .ws-st-schritt-titel { font-size: 20px; line-height: 28px; }
+  .ws-st-schritt-text p, .ws-st-haken li { font-size: 16px; line-height: 24px; }
+  .ws-st-haken li::before { top: 2px; }
+  .ws-st-fall-fussnote { margin-top: var(--abstand-8); }
+  .ws-st-tag { padding: var(--abstand-4); }
+  .ws-st-abbildung .pe-lesen-betreff { font-size: 18px; line-height: 24px; }
+}
