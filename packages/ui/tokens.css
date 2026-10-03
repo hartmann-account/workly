@@ -1,0 +1,395 @@
+/* workly – tokens.css
+   Erzeugt aus tokens.json mit scripts/tokens-css.mjs. Nicht von Hand ändern. */
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./fonts/dm-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./fonts/dm-sans-latin-wght-italic.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root, [data-theme="hell"] {
+  --deck-blau-start: #3c80ff;
+  --deck-blau-ende: #004eff;
+  --deck-blau: #1f68fe;
+  --deck-blau-titel: #0857ff;
+  --deck-blau-tint: #c8daff;
+  --deck-pink-start: #fe516b;
+  --deck-pink-ende: #ff3161;
+  --deck-pink: #ff4567;
+  --deck-pink-tint: #ffc4ce;
+  --deck-violett-start: #8648ff;
+  --deck-violett-ende: #8500ff;
+  --deck-violett: #862eff;
+  --deck-violett-tint: #dfccfd;
+  --deck-gelb: #f9b900;
+  --deck-tinte: #131d33;
+  --deck-tinte-2: #252b36;
+  --deck-schiefer: #576082;
+  --deck-kartengrau: #f6f4f7;
+  --deck-linie: #c2c2c2;
+  --deck-wortmarke-akzent: #b8d1ff;
+  --grund: #ffffff;
+  --flaeche: var(--deck-kartengrau);
+  --flaeche-2: #eeebf0;
+  --flaeche-erhoeht: #ffffff;
+  --akzent-hauch: #eef3ff;
+  --abdunklung: rgba(9,17,34,0.45);
+  --text: var(--deck-tinte);
+  --text-2: var(--deck-schiefer);
+  --text-3: #656f91;
+  --text-auf-akzent: #ffffff;
+  --linie: #e7e4ea;
+  --linie-stark: #7d86a3;
+  --akzent: var(--deck-blau);
+  --akzent-hover: var(--deck-blau-titel);
+  --akzent-aktiv: var(--deck-blau-ende);
+  --akzent-text: var(--deck-blau-titel);
+  --akzent-zart: var(--deck-blau-tint);
+  --akzent-auf-zart: #0551e5;
+  --pink: var(--deck-pink);
+  --pink-text: #db164b;
+  --pink-zart: var(--deck-pink-tint);
+  --pink-auf-zart: #b8033b;
+  --violett: var(--deck-violett);
+  --violett-text: #842aff;
+  --violett-zart: var(--deck-violett-tint);
+  --violett-auf-zart: #7910ef;
+  --ok: #0f7a50;
+  --ok-flaeche: #d8f2e6;
+  --ok-text: #0b6b45;
+  --fehler: #c4122f;
+  --fehler-flaeche: #fde2e6;
+  --fehler-text: #a50e27;
+  --text-auf-fehler: #ffffff;
+  --text-auf-warn: var(--deck-tinte);
+  --warn: var(--deck-gelb);
+  --warn-flaeche: #fff1c7;
+  --warn-text: #8a5a00;
+  --info-flaeche: var(--akzent-hauch);
+  --info-text: var(--akzent-auf-zart);
+  --fokus: var(--akzent);
+  --fokus-auf-akzent: #ffffff;
+  --glow-blau: 0 13px 33px rgba(32,103,255,0.25);
+  --glow-blau-gross: 0 19px 35px rgba(32,103,255,0.277);
+  --glow-pink: 0 13px 33px rgba(255,67,102,0.25);
+  --glow-violett: 0 13px 33px rgba(133,42,255,0.25);
+  --schatten-schwebend: 0 1px 2px rgba(19,29,51,0.06), 0 8px 24px rgba(19,29,51,0.12);
+  --schatten-dialog: 0 24px 64px rgba(19,29,51,0.22);
+  --schatten-blatt: 0 -12px 40px rgba(19,29,51,0.18);
+  --schatten-feld-fokus: 0 0 0 3px rgba(31,104,254,0.22);
+}
+
+[data-theme="dunkel"] {
+  --grund: #091122;
+  --flaeche: #131d33;
+  --flaeche-2: #1a2540;
+  --flaeche-erhoeht: #1e2942;
+  --akzent-hauch: #13234a;
+  --abdunklung: rgba(2,6,16,0.66);
+  --text: #f6f4f7;
+  --text-2: #a1aac8;
+  --text-3: #8f9abd;
+  --linie: #26324d;
+  --linie-stark: #6b7899;
+  --akzent: #1f68fe;
+  --akzent-hover: #0857ff;
+  --akzent-aktiv: #004eff;
+  --akzent-text: #6f9dff;
+  --akzent-zart: #162f64;
+  --akzent-auf-zart: #6297fe;
+  --pink: #ff4567;
+  --pink-text: #ff6b86;
+  --pink-zart: #4c273f;
+  --pink-auf-zart: #fd6a7c;
+  --violett: #862eff;
+  --violett-text: #b394ff;
+  --violett-zart: #2f2164;
+  --violett-auf-zart: #a27dfe;
+  --ok: #3ecf8e;
+  --ok-flaeche: #0f2a22;
+  --ok-text: #4fd69c;
+  --fehler: #ff6b7d;
+  --fehler-flaeche: #3a1820;
+  --fehler-text: #ff8a96;
+  --text-auf-fehler: #091122;
+  --text-auf-warn: var(--deck-tinte);
+  --warn: #f9b900;
+  --warn-flaeche: #3a2e0a;
+  --warn-text: #ffd34d;
+  --info-flaeche: #13234a;
+  --info-text: #6f9dff;
+  --fokus: #6f9dff;
+  --glow-blau: 0 12px 30px rgba(32,103,255,0.32);
+  --glow-blau-gross: 0 18px 34px rgba(32,103,255,0.34);
+  --schatten-schwebend: 0 1px 0 rgba(255,255,255,0.04), 0 10px 28px rgba(0,0,0,0.45);
+  --schatten-dialog: 0 24px 64px rgba(0,0,0,0.6);
+  --schatten-blatt: 0 -12px 40px rgba(0,0,0,0.55);
+  --schatten-feld-fokus: 0 0 0 3px rgba(111,157,255,0.30);
+}
+
+:root {
+  --abstand-1: 4px;
+  --abstand-2: 8px;
+  --abstand-3: 12px;
+  --abstand-4: 16px;
+  --abstand-5: 20px;
+  --abstand-6: 24px;
+  --abstand-8: 32px;
+  --abstand-12: 48px;
+  --abstand-16: 64px;
+  --innen-karte: 24px;
+  --innen-karte-mobil: 18px;
+  --rand-inhalt: 32px;
+  --rand-inhalt-mobil: 16px;
+  --luecke: 16px;
+  --radius-knopf: 6px;
+  --radius-tag: 7px;
+  --radius-eintrag: 8px;
+  --radius-element: 11px;
+  --radius-mittel: 14px;
+  --radius-karte: 24px;
+  --radius-karte-mobil: 18px;
+  --radius-foto: 12px;
+  --radius-kachel: 20.1%;
+  --radius-blatt: 24px;
+  --radius-rund: 50%;
+  --radius-kapsel: 999px;
+  --verlauf-blau: linear-gradient(132.7deg, #3c80ff 0%, #004eff 100%);
+  --verlauf-blau-zugaenglich: linear-gradient(132.7deg, #2d70ee 0%, #004eff 100%);
+  --verlauf-pink: linear-gradient(132.7deg, #fe516b 0%, #ff3161 100%);
+  --verlauf-pink-zugaenglich: linear-gradient(132.7deg, #de3052 0%, #e80a50 100%);
+  --verlauf-violett: linear-gradient(132.7deg, #8648ff 0%, #8500ff 100%);
+  --verlauf-foto: linear-gradient(0deg, rgba(49,49,49,0.82) 0%, rgba(66,66,66,0.40) 100%);
+  --seitenleiste-b: 256px;
+  --kopf-h: 64px;
+  --inhalt-max: 1180px;
+  --assistent-b: 380px;
+  --dialog-max: 520px;
+  --anmelden-max: 440px;
+  --lesen-max: 680px;
+  --knopf-hoehe: 44px;
+  --knopf-hoehe-klein: 36px;
+  --knopf-hoehe-gross: 52px;
+  --symbol: 20px;
+  --symbol-knopf: 18px;
+  --symbol-klein: 16px;
+  --kachel: 40px;
+  --kachel-klein: 28px;
+  --kachel-gross: 64px;
+  --avatar: 32px;
+  --logo-h: 32px;
+  --umbruch-1280: 1280px;
+  --umbruch-900: 900px;
+  --umbruch-640: 640px;
+  --umbruch-520: 520px;
+  --dauer-kurz: 120ms;
+  --dauer-standard: 180ms;
+  --dauer-blatt: 280ms;
+  --ebene-kopf: 40;
+  --ebene-leiste: 45;
+  --ebene-abdunklung: 50;
+  --ebene-assistent: 55;
+  --ebene-menue: 60;
+  --ebene-dialog: 80;
+  --ebene-kurzmeldung: 90;
+  --ebene-skip: 100;
+  --font-sans: "Rig Sans", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.app-titel-xl {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-seitentitel {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.app-abschnitt {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.app-karte-titel {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.app-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.app-text-s {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.app-lesetext {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.app-knopf {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.app-knopf-s {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.app-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.app-klein {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.app-tag {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.app-versal {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.app-kennzahl {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-kennzahl-s {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.app-timer {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  line-height: 68px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.app-zeit {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.app-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.marke-held {
+  font-family: var(--font-sans);
+  font-size: 60px;
+  line-height: 75px;
+  font-weight: 700;
+}
+
+.marke-abschnitt {
+  font-family: var(--font-sans);
+  font-size: 52px;
+  line-height: 66px;
+  font-weight: 700;
+}
+
+.marke-statement {
+  font-family: var(--font-sans);
+  font-size: 45px;
+  line-height: 56px;
+  font-weight: 500;
+}
+
+.marke-kennzahl {
+  font-family: var(--font-sans);
+  font-size: 68px;
+  line-height: 84px;
+  font-weight: 700;
+}
+
+.marke-lead {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 600;
+}
+
+.marke-kicker {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+.marke-text {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.marke-label {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 19px;
+  font-weight: 500;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@workly/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Designsystem workly: Tokens, Stylesheet, Schrift, Logos und Symbole.",
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./bundle.css": "./bundle.css",
+    "./tokens.json": "./tokens.json",
+    "./symbole": "./src/symbole.ts",
+    "./logos/*": "./logos/*",
+    "./fonts/*": "./fonts/*"
+  },
+  "scripts": {
+    "build": "node scripts/tokens-css.mjs",
+    "test": "node scripts/tokens-css.mjs --check",
+    "typecheck": "node scripts/tokens-css.mjs --check"
+  }
+}

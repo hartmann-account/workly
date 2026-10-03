@@ -1,0 +1,96 @@
+/* workly Website – seitenweite Muster (Präfix ws-)
+   Ergänzt components/bundle.css aus @workly/ui. Nur Tokens aus tokens.css; die einzige feste Farbe
+   ist #ffffff auf Verlaufsflächen. Breakpoints wie im Designsystem: 1280, 900, 640, 520 px. */
+
+html { scroll-padding-top: calc(var(--kopf-h) + var(--abstand-4)); }
+main:focus { outline: none; }
+
+/* ---------- Rahmen und Abschnitte ---------- */
+.ws-rahmen { width: 100%; max-width: var(--inhalt-max); margin-inline: auto; padding-inline: var(--rand-inhalt); }
+.ws-abschnitt { padding-block: var(--abstand-16); }
+.ws-abschnitt + .ws-abschnitt { padding-top: 0; }
+.ws-abschnitt-flaeche { background: var(--flaeche); }
+.ws-abschnitt-flaeche + .ws-abschnitt,
+.ws-abschnitt + .ws-abschnitt-flaeche { padding-top: var(--abstand-16); }
+.ws-abschnitt-flaeche .karte { background: var(--grund); }
+
+.ws-abschnitt-kopf { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); max-width: 46em; margin-bottom: var(--abstand-12); }
+.ws-abschnitt-kopf-mitte { align-items: center; margin-inline: auto; text-align: center; }
+.ws-kicker { margin: 0; font: 700 18px/24px var(--font-sans); color: var(--text); }
+.ws-abschnitt-titel { margin: 0; font-family: var(--font-sans); font-weight: 700; font-size: clamp(28px, 2.6vw + 15px, 52px); line-height: 1.24; letter-spacing: -0.01em; color: var(--akzent-text); text-wrap: balance; }
+.ws-lead { margin: 0; max-width: 40em; font: 500 18px/28px var(--font-sans); color: var(--text-2); }
+.ws-text { max-width: var(--lesen-max); font: 400 16px/26px var(--font-sans); color: var(--text); }
+.ws-text > * + * { margin-top: var(--abstand-4); }
+.ws-text h2 { margin-top: var(--abstand-12); font: 700 24px/32px var(--font-sans); color: var(--text); }
+.ws-text h3 { margin-top: var(--abstand-8); font: 600 18px/24px var(--font-sans); color: var(--text); }
+.ws-text ul, .ws-text ol { padding-left: var(--abstand-6); }
+.ws-text li + li { margin-top: var(--abstand-2); }
+.ws-fussnote { margin: var(--abstand-4) 0 0; font: 500 13px/18px var(--font-sans); color: var(--text-2); }
+
+/* Seitenkopf für Unterseiten ohne Held (Rechtliches, Warteliste) */
+.ws-seitenkopf { padding-block: calc(var(--abstand-12) + var(--abstand-4)) var(--abstand-8); }
+.ws-seitentitel { margin: 0; font: 700 40px/48px var(--font-sans); letter-spacing: -0.015em; color: var(--text); text-wrap: balance; }
+.ws-seitenkopf .ws-lead { margin-top: var(--abstand-4); }
+
+/* ---------- Kopfleiste ---------- */
+.ws-kopf { position: sticky; top: 0; z-index: var(--ebene-kopf); border-bottom: 1px solid var(--linie); }
+.ws-kopf-innen { display: flex; align-items: center; gap: var(--abstand-6); min-height: var(--kopf-h); }
+.ws-kopf-marke { display: inline-flex; align-items: center; min-height: var(--knopf-hoehe); color: inherit; border-radius: var(--radius-knopf); }
+.ws-kopf-marke .wortmarke { font-size: 26px; }
+.ws-nav { flex: 1; min-width: 0; }
+.ws-nav-liste { display: flex; flex-wrap: wrap; gap: var(--abstand-1); margin: 0; padding: 0; list-style: none; }
+.ws-nav-link { display: inline-flex; align-items: center; min-height: var(--knopf-hoehe-klein); padding: 0 var(--abstand-3); border-radius: var(--radius-knopf);
+  color: var(--text-2); font: 600 15px/20px var(--font-sans); text-decoration: none; transition: background-color var(--dauer-kurz) ease, color var(--dauer-kurz) ease; }
+.ws-nav-link:hover { background: var(--flaeche); color: var(--text); text-decoration: none; }
+.ws-nav-link[aria-current="page"] { background: var(--akzent-hauch); color: var(--akzent-text); }
+.ws-kopf-aktionen { display: flex; align-items: center; gap: var(--abstand-2); margin-left: auto; }
+.ws-menue-knopf { display: none; }
+.ws-menue .mo-blatt-eintrag[aria-current="page"] { background: var(--akzent-hauch); color: var(--akzent-text); }
+
+@media (max-width: 1100px) { .ws-kopf-innen { gap: var(--abstand-4); } .ws-nav-link { padding: 0 var(--abstand-2); } }
+@media (max-width: 900px) {
+  .ws-nav, .ws-kopf-warteliste { display: none; }
+  .ws-menue-knopf { display: inline-grid; }
+  .ws-kopf-innen { min-height: calc(var(--knopf-hoehe) + var(--abstand-3)); }
+  .ws-kopf-aktionen .symbolknopf { width: var(--knopf-hoehe); height: var(--knopf-hoehe); }
+}
+@media (min-width: 901px) { .ws-menue[open] { display: none; } }
+
+/* ---------- Fußzeile ---------- */
+.ws-fuss { margin-top: var(--abstand-16); padding-block: var(--abstand-12) var(--abstand-8); border-top: 1px solid var(--linie); background: var(--grund); }
+.ws-fuss-innen { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--abstand-12); }
+.ws-fuss-marke { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); }
+.ws-fuss-logo { display: inline-flex; color: inherit; border-radius: var(--radius-knopf); }
+.ws-fuss-logo .wortmarke { font-size: 28px; }
+.ws-fuss-claim { margin: 0; font: 500 18px/24px var(--font-sans); color: var(--text); }
+.ws-fuss-text { margin: 0; max-width: 36em; font: 500 14px/20px var(--font-sans); color: var(--text-2); }
+.ws-fuss-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-8); }
+.ws-fuss-spalte { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); min-width: 0; }
+.ws-fuss-titel { margin: 0; font: 600 11px/14px var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
+.ws-fuss-liste { display: grid; gap: var(--abstand-2); margin: 0; padding: 0; list-style: none; }
+.ws-fuss-liste a { display: inline-block; padding-block: 1px; color: var(--text); font: 500 15px/22px var(--font-sans); text-decoration: none; }
+.ws-fuss-liste a:hover { text-decoration: underline; }
+.ws-fuss-unten { margin-top: var(--abstand-12); padding-top: var(--abstand-6); border-top: 1px solid var(--linie); font: 500 13px/18px var(--font-sans); color: var(--text-2); }
+.ws-fuss-unten p { margin: 0; }
+
+@media (max-width: 900px) { .ws-fuss-innen { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-8); } }
+@media (max-width: 640px) { .ws-fuss-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-6); } }
+@media (max-width: 520px) {
+  .ws-rahmen { padding-inline: var(--rand-inhalt-mobil); }
+  .ws-abschnitt, .ws-abschnitt-flaeche + .ws-abschnitt, .ws-abschnitt + .ws-abschnitt-flaeche { padding-block: var(--abstand-12); }
+  .ws-abschnitt + .ws-abschnitt { padding-top: 0; }
+  .ws-abschnitt-kopf { margin-bottom: var(--abstand-8); }
+  .ws-lead { font-size: 17px; line-height: 26px; }
+  .ws-seitenkopf { padding-block: var(--abstand-8) var(--abstand-6); }
+  .ws-seitentitel { font-size: 30px; line-height: 38px; }
+  .ws-fuss-nav { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Kontrastmodus: Flächen ohne Rand bekommen eine Linie */
+@media (forced-colors: active) {
+  .ws-abschnitt-flaeche, .ws-kopf, .ws-fuss { outline: 1px solid transparent; }
+}
+
+/* ---------- Fehlerseite ---------- */
+.ws-fehler-aktion { margin: var(--abstand-8) 0 0; }
+.ws-fehler-stapel { margin-top: var(--abstand-8); padding: var(--abstand-4); overflow-x: auto; border-radius: var(--radius-mittel); background: var(--flaeche); font: 400 13px/20px var(--font-mono); }
