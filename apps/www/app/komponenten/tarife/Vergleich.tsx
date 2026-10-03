@@ -224,7 +224,7 @@ export function Vergleich() {
         </p>
         <p>
           <strong>Verarbeitung.</strong> Der Assistent ist ab Werk aus und läuft erst nach deiner Zustimmung. Zum Start
-          gehen KI-Anfragen über die Anthropic-API und werden außerhalb der EU verarbeitet; das sagt dir der
+          gehen KI-Anfragen über die Anthropic-API, und Anthropic verarbeitet sie außerhalb der EU; das sagt dir der
           Zustimmungsdialog vorher. Der Team-Tarif nutzt ab Q4 2027 Claude in Amazon Bedrock mit EU-Profil ab
           Frankfurt.
         </p>

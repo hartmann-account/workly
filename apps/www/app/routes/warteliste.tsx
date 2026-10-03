@@ -40,7 +40,7 @@ export default function Seite({ loaderData, actionData }: Route.ComponentProps) 
         akzent="Warteliste"
         rest="für die Beta"
         lead={ohneTrennung(
-          "Die geschlossene Beta beginnt im Juni 2027, die Registrierung für alle im September 2027. Trag dich ein; sobald es losgeht, bekommst du eine E-Mail.",
+          "Die geschlossene Beta beginnt im Juni 2027, die Registrierung für alle im September 2027. Trag dich ein; zum Start der Beta bekommst du eine E-Mail.",
         )}
       />
       <div className="ws-rahmen ws-wl-raster">

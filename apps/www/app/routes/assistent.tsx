@@ -8,7 +8,7 @@ import { EntwurfAbbildung, LeisteAbbildung } from "~/komponenten/assistent/Abbil
 import { FaelleTabelle, StufenLegende } from "~/komponenten/assistent/Faelle";
 import { KontingentTabelle } from "~/komponenten/assistent/Kontingente";
 import { seitenMeta } from "~/lib/meta";
-import { STAND, STANDORT_SATZ } from "~/lib/seite";
+import { STANDORT_SATZ } from "~/lib/seite";
 import stil from "~/stile/assistent.css?url";
 import type { Route } from "./+types/assistent";
 
@@ -47,11 +47,11 @@ const REGELN: { titel: string; text: string }[] = [
   },
   {
     titel: "Kennzeichnung",
-    text: "Die Seitenleiste weist den Assistenten sichtbar als KI-System aus und sagt dazu, dass Antworten Fehler enthalten können.",
+    text: "Unter dem Titel der Seitenleiste steht „KI-System · Antworten können Fehler enthalten“.",
   },
   {
     titel: "Protokoll ohne Inhalt",
-    text: "Jede Aktion des Assistenten wird ohne Inhalt protokolliert; du siehst dein eigenes Protokoll, Admins sehen nur den Gesamtverbrauch.",
+    text: "workly protokolliert jede Aktion des Assistenten ohne Inhalt. Du siehst dein eigenes Protokoll, Admins sehen nur den Gesamtverbrauch.",
   },
   {
     titel: "Keine Bewertung von Personen",
@@ -99,8 +99,8 @@ export default function Seite() {
               </h3>
               <p className="ws-ki-ort-text">
                 Liest du eine Mail mit einer Bitte, schlägt eine Karte die passende Aufgabe mit Fälligkeit und Projekt
-                vor. Bei langen Verläufen fasst sie Stand, offene Fragen und Zusagen zusammen. Jede Karte nennt ihre
-                Quelle, und angelegt wird erst nach deinem Klick.
+                vor. Bei Verläufen mit mehr als 5 Nachrichten fasst sie Stand, offene Fragen und Zusagen zusammen. Jede
+                Karte nennt ihre Quelle; die Aufgabe entsteht erst, wenn du klickst.
               </p>
             </li>
             <li className="ws-ki-ort">
@@ -136,7 +136,7 @@ export default function Seite() {
       <Abschnitt
         id="ki-faelle"
         titel="Was der Assistent vorbereitet"
-        lead="Zehn Fälle sind geplant. Zu jedem siehst du, was ihn auslöst, was Claude liefert und was du bestätigst."
+        lead="workly plant zehn Fälle. Zu jedem siehst du, was ihn auslöst, was Claude liefert und was du bestätigst."
       >
         <StufenLegende />
         <FaelleTabelle />
@@ -170,8 +170,8 @@ export default function Seite() {
           <div className="karte ws-ki-karte">
             <h3 className="ws-ki-karte-titel">Zum Start</h3>
             <p className="ws-ki-karte-text">
-              Anfragen gehen über die Anthropic-API an Claude und werden außerhalb der EU verarbeitet. Das geschieht nur
-              nach deiner ausdrücklichen Zustimmung, und der Zustimmungsdialog sagt es dir vorher.
+              Anfragen gehen über die Anthropic-API an Claude, und Anthropic verarbeitet sie außerhalb der EU. Das
+              geschieht nur, wenn du ausdrücklich zugestimmt hast.
             </p>
           </div>
           <div className="karte ws-ki-karte">
@@ -185,10 +185,9 @@ export default function Seite() {
             </p>
           </div>
           <div className="karte ws-ki-karte">
-            <h3 className="ws-ki-karte-titel">Aufbewahrung beim Anbieter</h3>
+            <h3 className="ws-ki-karte-titel">Aufbewahrung bei Anthropic</h3>
             <p className="ws-ki-karte-text">
-              Wie lange der Anbieter Anfragen aufbewahrt, nennt workly vor Beginn der geschlossenen Beta im
-              Zustimmungsdialog.
+              Wie lange Anthropic Anfragen aufbewahrt, klärt workly vor der geschlossenen Beta.
             </p>
           </div>
           <div className="karte ws-ki-karte">
@@ -207,7 +206,7 @@ export default function Seite() {
       <Abschnitt
         id="ki-kontingente"
         titel="Kontingente je Tarif"
-        lead={`Jeder Tarif enthält eine feste Zahl an Anfragen je Monat. Die Werte sind geplant, Stand ${STAND}.`}
+        lead="Jeder Tarif enthält eine feste Zahl an Anfragen je Monat."
       >
         <ul className="ws-ki-hinweise" role="list">
           <li className="ws-ki-hinweis">
@@ -236,7 +235,7 @@ export default function Seite() {
           <KontingentTabelle />
         </div>
         <p className="ws-fussnote">
-          Geplante Werte, Stand {STAND}. Die Kontingente werden bis zum Start geprüft und können sich noch ändern.
+          workly prüft die Kontingente bis zum Start; sie können sich noch ändern.
         </p>
         <p className="ws-ki-weiter">
           <Link to="/tarife" className="knopf knopf-kontur">

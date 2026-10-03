@@ -119,7 +119,7 @@ export function HeuteAnsicht() {
               <div>
                 <a className="ta-titel">Angebot an Frau Kaya senden</a>
                 <p className="ta-meta">
-                  <span className="tag tag-warn">Heute fällig</span>
+                  <span className="tag tag-warn">Fällig Fr., 09.10.</span>
                   <span>
                     <SymbolGrafik name="uhr" className="symbol symbol-klein" />
                     11:30 Uhr eingeplant
@@ -176,7 +176,7 @@ export function HeuteAnsicht() {
               <span className="avatar">AK</span>
               <a className="ta-nachricht-link">
                 <span className="ta-absender">Aylin Kaya</span>
-                <span className="ta-betreff">Angebot Website</span>
+                <span className="ta-betreff">Re: Angebot Website</span>
               </a>
               <time className="ta-zeit" dateTime="2026-10-06T08:12">
                 08:12
@@ -230,8 +230,8 @@ const MAILS_HEUTE: Mail[] = [
   {
     initialen: "AK",
     absender: "Aylin Kaya",
-    betreff: "Angebot Website",
-    vorschau: "Guten Tag, könnten Sie mir bis Freitag ein Angebot für die neue Website schicken?",
+    betreff: "Re: Angebot Website",
+    vorschau: "Passt Ihnen Freitag um 10 Uhr für einen kurzen Rückruf zum Angebot?",
     zeit: "08:12",
     iso: "2026-10-06T08:12",
     ungelesen: true,

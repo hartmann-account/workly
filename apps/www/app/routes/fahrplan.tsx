@@ -27,7 +27,7 @@ const NICHT_GEPLANT = [
     id: "fp-ohne-erkennung",
     titel: "Erkennung von Burnout, Stress oder Stimmung",
     stand: "Dauerhaft ausgeschlossen",
-    text: "workly trifft keine Aussage über deinen Zustand. Hinweise rechnen nur mit Daten, die du selbst erzeugst, etwa der Termindichte in deinem Kalender. Nur du siehst sie.",
+    text: "workly trifft keine Aussage über deinen Zustand. Hinweise beruhen nur auf Daten, die du selbst erzeugst, etwa auf der Termindichte deines Kalenders. Nur du siehst sie.",
   },
   {
     id: "fp-ohne-punkte",
@@ -74,7 +74,7 @@ export default function Fahrplan() {
       <Abschnitt
         id="fp-phasen-titel"
         titel="Was in jeder Phase geschieht"
-        lead="Jede Karte nennt, woran workly in der Phase arbeitet und was du davon merkst."
+        lead="Die Karten zeigen je Phase, woran workly arbeitet und was du davon merkst."
         className="ws-fp-nach-zeitstrahl"
       >
         <Phasenkarten />
@@ -117,7 +117,7 @@ export default function Fahrplan() {
       <WartelisteBand
         id="fp-warteliste-titel"
         titel="Warteliste für die Beta ab Juni 2027"
-        text="Die geschlossene Beta beginnt im Juni 2027 mit 200 bis 500 Personen. Trag dich ein, dann bekommst du eine Nachricht, sobald Plätze frei werden."
+        text="Trag dich ein. Wir schreiben dir, sobald Plätze in der Beta frei werden; ein Eintrag ist noch keine Zusage."
         nebenlink={{ to: "/funktionen", text: "Zu den Funktionen" }}
       />
     </>

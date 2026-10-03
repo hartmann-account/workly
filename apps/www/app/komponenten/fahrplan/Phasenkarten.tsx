@@ -24,13 +24,13 @@ const PHASEN: Phase[] = [
     zeitraum: "Okt. – Dez. 2026",
     aktuell: true,
     geschieht: [
-      "Gespräche mit 25 Selbstständigen über ihren Arbeitsalltag",
-      "Ein Klick-Prototyp zum Ausprobieren",
-      "Preisgespräche zu zwei möglichen Tarifmodellen",
+      "25 Interviews über Arbeitsalltag und Werkzeuge",
+      "Ein Klick-Prototyp",
+      "Preisinterviews zu zwei Tarifmodellen",
       "Die Warteliste für Interessierte",
       "Technische Grundlagen wie Testumgebung, erster Mailserver und Wiederherstellung aus Sicherungen",
     ],
-    merkst: <p className="ws-fp-text">Du kannst dich in die Warteliste eintragen. Ein Konto anlegen kannst du noch nicht.</p>,
+    merkst: <p className="ws-fp-text">Du kannst dich in die Warteliste eintragen, aber noch kein Konto anlegen.</p>,
   },
   {
     id: "fp-phase-1",
@@ -44,7 +44,7 @@ const PHASEN: Phase[] = [
     ],
     merkst: (
       <p className="ws-fp-text">
-        20 Personen nutzen die erste Version vier Wochen lang. Wer nicht dabei ist, bleibt auf der Warteliste.
+        Die Alpha ist geschlossen. Dein Eintrag auf der Warteliste gilt weiter.
       </p>
     ),
   },
@@ -62,8 +62,8 @@ const PHASEN: Phase[] = [
     ],
     merkst: (
       <p className="ws-fp-text">
-        Über die Warteliste erfährst du, wann Plätze in der Beta frei werden. Für die Beta gilt ein eigener Preis; seine
-        Höhe steht noch nicht fest.
+        Die Plätze in der Beta vergeben wir über die Warteliste. Für die Beta gilt ein eigener Preis; seine Höhe steht
+        noch nicht fest.
       </p>
     ),
   },
@@ -76,7 +76,7 @@ const PHASEN: Phase[] = [
     merkst: (
       <>
         <p className="ws-fp-text">
-          Du registrierst dich ohne Zahlungsdaten und wählst zwischen Free, Privat und Pro. Die Preise sind geplant, Stand{" "}
+          Du registrierst dich ohne Zahlungsdaten und wählst deinen Tarif. Die Preise sind geplant, Stand{" "}
           <time dateTime={STAND_ISO}>{STAND}</time>.
         </p>
         <p className="ws-fp-text">
@@ -94,7 +94,7 @@ const PHASEN: Phase[] = [
     name: "Teams, Gäste und Buchungsseite",
     zeitraum: "ab Q4 2027",
     geschieht: [
-      "Team-Tarif ab 2 Personen; sein Assistent läuft über Claude in Amazon Bedrock mit EU-Profil ab Frankfurt",
+      "Team-Tarif ab 2 Nutzern; sein Assistent läuft über Claude in Amazon Bedrock mit EU-Profil ab Frankfurt",
       "Gäste, Buchungsseite und digitale Visitenkarte",
       "Privater Wochenrückblick",
       "Domain-Erweiterung, um eine Domain direkt in workly zu registrieren",

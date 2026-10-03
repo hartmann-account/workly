@@ -55,7 +55,7 @@ const MODULE: Modul[] = [
   },
   {
     name: "Assistent (Claude)",
-    start: "Ab Werk aus; nach deiner Zustimmung Aufgabenvorschläge aus Mails, Zusammenfassungen und Antwortentwürfe. Weitere Fälle folgen, wenn ihre Tests bestehen",
+    start: "Ab Werk aus; nach deiner Zustimmung Aufgabenvorschläge aus Mails, Zusammenfassungen und Antwortentwürfe; weitere Fälle folgen, wenn ihre Tests bestehen",
     ausbau1: "Aufgaben aus Besprechungsnotizen, Posteingang aufräumen, Wochenrückblick; im Team-Tarif über Claude in Amazon Bedrock mit EU-Profil",
   },
   {

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 import { SymbolGrafik } from "~/komponenten/SymbolGrafik";
 
 /*
@@ -32,7 +33,7 @@ const FRAGEN: Frage[] = [
   },
   {
     id: "verbundenes-postfach",
-    frage: "Was heißt verbundenes Postfach?",
+    frage: "Was heißt „verbundenes Postfach“?",
     antwort: (
       <>
         <p>
@@ -51,8 +52,8 @@ const FRAGEN: Frage[] = [
     frage: "Was zahlen Studierende?",
     antwort: (
       <p>
-        Free ist auch für Studierende gedacht und kostet nichts. Wer als Studentin oder Student eine eigene Domain
-        möchte, bekommt auf Privat 50{NBSP}% Rabatt.
+        Free kostet nichts und ist auch für Studierende gedacht. Wer als Studentin oder Student eine eigene Domain
+        möchte, bekommt nach heutiger Planung 50{NBSP}% Rabatt auf Privat.
       </p>
     ),
   },
@@ -61,7 +62,7 @@ const FRAGEN: Frage[] = [
     frage: "Kann ich den Tarif wechseln?",
     antwort: (
       <p>
-        Ja. In der Abrechnung wählst du „Tarif ändern“. Der Wechsel wirkt sofort und wird anteilig abgerechnet.
+        Ja. In der Abrechnung wählst du „Tarif ändern“. Der Wechsel wirkt sofort; wir rechnen anteilig ab.
       </p>
     ),
   },
@@ -89,7 +90,10 @@ const FRAGEN: Frage[] = [
     id: "schweiz",
     frage: "Was gilt für Kundinnen und Kunden in der Schweiz?",
     antwort: (
-      <p>Steuer und Währung für die Schweiz stehen noch nicht fest. Wir nennen beides vor dem Start.</p>
+      <p>
+        Steuer und Währung für die Schweiz stehen noch nicht fest. Beides hängt vom Sitz des Unternehmens ab, über den
+        wir noch entscheiden.
+      </p>
     ),
   },
   {
@@ -102,7 +106,10 @@ const FRAGEN: Frage[] = [
           testen 20 Personen eine geschlossene Alpha. Von Juni bis August 2027 läuft die geschlossene Beta mit 200 bis
           500 Personen; im September 2027 öffnet die Registrierung für alle. Den Team-Tarif gibt es ab Q4 2027.
         </p>
-        <p>Bis dahin merkst du auf der Warteliste einen Tarif vor. Die Stufen bis 2028 zeigt der Fahrplan.</p>
+        <p>
+          Bis dahin trägst du dich auf der <Link to="/warteliste">Warteliste</Link> ein und gibst dort an, welcher Tarif
+          dich interessiert. Die Stufen bis 2028 zeigt der <Link to="/fahrplan">Fahrplan</Link>.
+        </p>
       </>
     ),
   },

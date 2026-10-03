@@ -333,8 +333,8 @@ function Erfolg({ email, gespraech }: { email: string; gespraech: boolean }) {
       <div className="meldung meldung-ok ws-wl-meldung" role="status" tabIndex={-1} ref={meldung}>
         <div className="meldung-inhalt">
           <p>
-            <strong>Du stehst auf der Warteliste.</strong> Sobald es mit der geschlossenen Beta losgeht, schreiben wir
-            dir an <span className="ws-wl-adresse">{email}</span>.
+            <strong>Du stehst auf der Warteliste.</strong> Zum Start der geschlossenen Beta schreiben wir dir an{" "}
+            <span className="ws-wl-adresse">{email}</span>.
           </p>
           {gespraech ? (
             <p>{ohneTrennung("Für ein Gespräch fragen wir dich vielleicht bis Dezember 2026 per E-Mail an.")}</p>

@@ -10,12 +10,12 @@ type Phase = {
 
 /** Verbindlicher Fahrplan aus dem Plattformkonzept, Abschnitt „Umsetzungsfahrplan“. */
 export const PHASEN: Phase[] = [
-  { name: "Phase 0", zeitraum: "Okt. – Dez. 2026", text: "Gespräche mit Selbstständigen, Prototyp, technische Grundlagen", art: "meilenstein", aktuell: true },
+  { name: "Phase 0", zeitraum: "Okt. – Dez. 2026", text: "Interviews, Klick-Prototyp, technische Grundlagen", art: "meilenstein", aktuell: true },
   { name: "Phase 1", zeitraum: "Jan. – Mai 2027", text: "Erste Version und geschlossene Alpha mit 20 Personen", art: "meilenstein" },
   { name: "Phase 2", zeitraum: "Juni – Aug. 2027", text: "Geschlossene Beta mit 200 bis 500 Personen", art: "meilenstein" },
   { name: "Phase 3", zeitraum: "Sep. 2027", text: "Start mit öffentlicher Registrierung", art: "meilenstein" },
   { name: "Ausbau 1", zeitraum: "ab Q4 2027", text: "Teams, Gäste, Buchungsseite, Wochenrückblick", art: "markierung" },
-  { name: "Ausbau 2", zeitraum: "2028", text: "Website-Erweiterung, mobile Apps, Office-Dateien", art: "markierung" },
+  { name: "Ausbau 2", zeitraum: "2028", text: "Website-Erweiterung, mobile Apps, Office-Dateien (offen)", art: "markierung" },
 ];
 
 type Props = {

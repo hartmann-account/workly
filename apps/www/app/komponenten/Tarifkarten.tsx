@@ -135,11 +135,11 @@ export function Tarifkarten({ id = "tarife-titel", ebene = "h2", titel = "Wähle
               vorhandene Domain zu verbinden kostet nichts.
             </li>
             <li>
-              <strong>Website</strong>Bis zu 5 Seiten unter deiner Domain mit Kontaktformular in den Posteingang;
-              5{NBSP}€ zzgl. MwSt. je Monat, ab 2028
+              <strong>Website</strong>Bis zu 5 Seiten aus Vorlagen mit Kontaktformular in den Posteingang; in Pro
+              und Team, 5{NBSP}€ zzgl. MwSt. je Monat, ab 2028.
             </li>
             <li>
-              <strong>Zusätzliche Assistent-Anfragen</strong>Als Paket zubuchbar, ab Privat
+              <strong>Zusätzliche Assistent-Anfragen</strong>Als Paket zubuchbar, ab Privat.
             </li>
           </ul>
         </div>

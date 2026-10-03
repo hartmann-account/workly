@@ -13,7 +13,7 @@ type Props = {
 export function WartelisteBand({
   id = "warteliste-band",
   titel = "Die geschlossene Beta beginnt im Juni 2027",
-  text = "Trag dich in die Warteliste ein. Wir schreiben dir, sobald Plätze in der Beta frei werden; die Registrierung für alle öffnet im September 2027.",
+  text = "Trag dich in die Warteliste ein. Wir schreiben dir zum Start der Beta; die Registrierung für alle öffnet im September 2027.",
   nebenlink = { to: "/fahrplan", text: "Zum Fahrplan" },
 }: Props) {
   return (

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { CLAIM, NAVIGATION, STAND, STANDORT_SATZ } from "~/lib/seite";
+import { CLAIM, NAVIGATION, STAND, STAND_ISO, STANDORT_SATZ } from "~/lib/seite";
 
 /** Fußzeile: Marke mit Claim, Speicherort, Navigation, Stand der Angaben. */
 export function Fuss() {
@@ -49,7 +49,7 @@ export function Fuss() {
       </div>
       <div className="ws-rahmen ws-fuss-unten">
         <p>
-          Stand der Angaben: <time dateTime="2026-10-03">{STAND}</time>. Preise und Termine sind geplant und
+          Stand der Angaben: <time dateTime={STAND_ISO}>{STAND}</time>. Preise und Termine sind geplant und
           können sich bis zum Start ändern.
         </p>
       </div>

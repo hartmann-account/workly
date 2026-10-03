@@ -2,17 +2,18 @@
  * Die zehn Fälle des Assistenten nach der Tabelle im Plattformkonzept (Abschnitt „KI-Schicht mit Claude“),
  * ohne Modellnamen. Stufen nach Abschnitt „Produktmodule“, Auflösung 2: Fälle 1, 3 und 4 sind verbindlich,
  * 2, 5, 6 und 8 folgen bis Ende Phase 1 (Mai 2027), wenn ihre Evaluationen bestehen; 7, 9 und 10 ab Ausbau 1.
+ * „Zum Start“ heißt wie auf der Seite Fahrplan: die Version, mit der im September 2027 die Registrierung öffnet.
  * Desktop: Tabelle; unter 640 px: Kartenliste (.tabelle-karten).
  */
 
 type Stufe = "fest" | "pruefung" | "ausbau";
 
 export const STUFEN: Record<Stufe, { text: string; klasse: string; faelle: string }> = {
-  fest: { text: "Fest eingeplant", klasse: "tag tag-blau", faelle: "Fälle 1, 3 und 4" },
+  fest: { text: "Zum Start", klasse: "tag tag-blau", faelle: "Fälle 1, 3 und 4, zur Registrierung im September 2027" },
   pruefung: {
-    text: "Bis Mai 2027, nach Prüfung",
+    text: "Zum Start, nach Tests",
     klasse: "tag",
-    faelle: "Fälle 2, 5, 6 und 8, wenn ihre Qualitätsprüfungen bis Ende Mai 2027 bestanden sind",
+    faelle: "Fälle 2, 5, 6 und 8, wenn ihre Tests bis Mai 2027 bestehen",
   },
   ausbau: { text: "ab Q4 2027", klasse: "tag", faelle: "Fälle 7, 9 und 10" },
 };
@@ -29,7 +30,7 @@ const FAELLE: Fall[] = [
   },
   {
     nr: 2,
-    ausloeser: "Mail mit Terminwunsch („Passt dir Dienstag, 14 Uhr?“)",
+    ausloeser: "Mail mit Terminwunsch („Passt dir Dienstag, 14:00 Uhr?“)",
     liefert: "Prüfung auf Überschneidungen, Entwurf von Termin und Antwort",
     bestaetigst: "Termin anlegen; Einladung und Antwort gehen erst nach „Senden“ hinaus",
     stufe: "pruefung",

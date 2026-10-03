@@ -26,7 +26,7 @@ export function meta(_: Route.MetaArgs) {
   return seitenMeta({
     titel: "Funktionen",
     beschreibung:
-      "Posteingang unter eigener Domain, Kalender, Aufgaben und Dokumente, in beide Richtungen verknüpft, dazu Suche, Befehlszeile und Fokus-Werkzeuge, die nur du siehst.",
+      "Posteingang unter eigener Domain, Kalender, Aufgaben und Dokumente, in beide Richtungen verknüpft. Dazu Suche, Befehlszeile und Fokus-Werkzeuge, deren Hinweise nur du siehst.",
     pfad: "/funktionen",
   });
 }
@@ -56,7 +56,7 @@ const HEUTE: Punkt[] = [
 ];
 
 const POSTEINGANG: Punkt[] = [
-  { text: "Postfach unter eigener Domain mit DNS-Assistent, ab Privat" },
+  { text: "Postfach unter eigener Domain mit geführter DNS-Einrichtung, ab Privat" },
   { text: "Verbundenes Postfach per IMAP, auch in Free" },
   {
     text: (
@@ -67,13 +67,13 @@ const POSTEINGANG: Punkt[] = [
   },
   { text: "Zähler für Ungelesenes nur am Posteingang, abschaltbar" },
   { text: "Gruppenpostfächer", ab: AUSBAU_1 },
-  { text: "Registrierung einer neuen Domain als Zusatzpaket", ab: AUSBAU_1 },
+  { text: "Registrierung neuer Domains als kostenpflichtige Erweiterung", ab: AUSBAU_1 },
 ];
 
 const KALENDER: Punkt[] = [
   { text: "Ansichten für Tag und Woche" },
   { text: "Einladungen nach dem Standard iCalendar" },
-  { text: "Fokusblöcke, die nach außen als belegt gelten" },
+  { text: "Fokusblöcke für konzentrierte Arbeit" },
   { text: "Abgleich per CalDAV mit den Kalender-Apps deiner Geräte" },
   { text: "Buchungsseite, über die andere Termine bei dir buchen", ab: AUSBAU_1 },
   { text: "Geteilte Kalender", ab: AUSBAU_1 },
@@ -93,7 +93,7 @@ const DOKUMENTE: Punkt[] = [
   { text: "Versionen mit Datum und Uhrzeit" },
   { text: "Freigabelinks mit Ablaufdatum" },
   { text: "Gemeinsame Bearbeitung in Echtzeit", ab: AUSBAU_1 },
-  { text: "Bearbeitung von Office-Dateien wird geprüft", ab: AUSBAU_2 },
+  { text: "Bearbeitung von Office-Dateien, Entscheidung offen", ab: AUSBAU_2 },
 ];
 
 const VERKNUEPFUNGEN: Punkt[] = [
@@ -101,7 +101,7 @@ const VERKNUEPFUNGEN: Punkt[] = [
   { text: "Aus einer Aufgabe wird ein Termin" },
   { text: "Dokumente und Aufgaben verweisen aufeinander" },
   { text: "Jede Verknüpfung in beiden Richtungen sichtbar" },
-  { text: "Verknüpfte Objekte bleiben erhalten, wenn die Quelle gelöscht wird, und tragen dann den Hinweis „Quelle gelöscht“" },
+  { text: "Löschst du die Quelle, bleibt das verknüpfte Objekt mit dem Hinweis „Quelle gelöscht“ erhalten" },
 ];
 
 const SUCHE: Punkt[] = [
@@ -129,7 +129,7 @@ const FOKUS: Punkt[] = [
 const GRUNDSAETZE = [
   {
     titel: "Nur für dich sichtbar",
-    text: "Hinweise beruhen auf deinen Terminen, Fokusblöcken und deinem Arbeitszeitfenster, und nur du siehst sie. Den Status „Im Fokus bis 11:30 Uhr“ sieht dein Team nur, wenn du ihn für diese Sitzung einschaltest.",
+    text: "Hinweise zu Termindichte und Fokuszeit siehst nur du. Den Status „Im Fokus bis 11:30 Uhr“ zeigt workly deinem Team nur, wenn du ihn für diese Sitzung einschaltest.",
   },
   {
     titel: "Keine Auswertung für Vorgesetzte",
@@ -182,8 +182,8 @@ const UMZUG: { titel: string; symbol: "hochladen" | "aktualisieren" | "schloss";
       { text: "Registrierung ohne Zahlungsdaten" },
       { text: "Anmeldung mit Passkey und zweitem Faktor" },
       { text: "Tarifwechsel wirkt sofort und anteilig" },
-      { text: "Kündigung ohne Support" },
-      { text: "Export ohne Support: Mails als EML, Termine als ICS, Kontakte als VCF, Dokumente als Markdown" },
+      { text: "Kündigung und Export ohne Support" },
+      { text: "Exportformate: EML für Mails, ICS für Termine, VCF für Kontakte, Markdown für Dokumente" },
     ],
   },
 ];
@@ -216,8 +216,8 @@ export default function Seite() {
     <>
       <Seitenkopf
         akzent="Vier Bausteine,"
-        rest="ein Programm."
-        lead="Posteingang, Kalender, Aufgaben und Dokumente teilen sich eine Oberfläche, eine Suche und einen Tagesplan. Was du in einem Modul anlegst, siehst du in den anderen."
+        rest="ein Programm"
+        lead="Posteingang, Kalender, Aufgaben und Dokumente teilen sich eine Suche und die Tagesansicht Heute. Verknüpfungen zwischen Mail, Aufgabe, Termin und Dokument siehst du an beiden Enden."
         kacheln={[{ name: "posteingang" }, { name: "kalender" }, { name: "aufgaben" }, { name: "dokumente" }]}
         aktionen={
           <>
@@ -246,7 +246,7 @@ export default function Seite() {
             ))}
           </ul>
           <p className="ws-fu-stand">
-            Stand {STAND}. Die Registrierung für alle öffnet im September 2027. Funktionen mit einem Datum wie „{AUSBAU_1}“ folgen danach.
+            Stand {STAND}. Die Registrierung für alle öffnet im September 2027. Funktionen mit einem Abzeichen wie „{AUSBAU_1}“ oder „{AUSBAU_2}“ folgen später.
           </p>
         </div>
       </nav>
@@ -310,7 +310,7 @@ export default function Seite() {
         className="ws-fu-modul ws-fu-breit"
         kicker={<Kachel name="aufgaben" />}
         titel="Aufgaben"
-        lead="Aufgaben ordnest du in Projekten, als Liste oder als Board. Jede Aufgabe lässt sich als Zeitblock in den Kalender legen; die Mail, aus der sie stammt, bleibt verknüpft."
+        lead="Aufgaben ordnest du in Projekten, als Liste oder als Board. Jede Aufgabe kannst du als Zeitblock in den Kalender legen."
       >
         <Punkte punkte={AUFGABEN} />
         <Bildschirm
@@ -327,7 +327,7 @@ export default function Seite() {
         className="ws-fu-modul ws-fu-breit"
         kicker={<Kachel name="dokumente" />}
         titel="Dokumente und Dateien"
-        lead="Texte, Protokolle und Checklisten schreibst du direkt in workly. Dateien legst du in der Ablage ab, mit Vorschau, Versionen und Freigabelinks, die nach einer Frist ablaufen."
+        lead="Im Editor schreibst du Angebote, Protokolle und Checklisten. Dateien legst du in der Ablage ab und gibst sie über Links frei, die nach einer Frist ablaufen."
       >
         <Punkte punkte={DOKUMENTE} />
         <Bildschirm
@@ -362,7 +362,7 @@ export default function Seite() {
         className="ws-fu-modul ws-fu-neben"
         kicker={<Kachel name="suche" />}
         titel="Suche und Befehlszeile"
-        lead="Die Suche findet Text in Mails, Aufgaben und Dokumenten, auch in PDFs. Mit der Befehlszeile legst du Aufgaben und Termine an, ohne das Modul zu wechseln."
+        lead="Die Suche öffnest du überall mit der Taste „/“. Mit der Befehlszeile legst du Aufgaben und Termine an, ohne das Modul zu wechseln."
       >
         <Punkte punkte={SUCHE} />
         <Bildschirm
@@ -390,7 +390,7 @@ export default function Seite() {
         className="ws-fu-modul ws-fu-breit"
         kicker={<Kachel name="fokus" variante="kachel-violett" />}
         titel="Fokus und Wohlbefinden"
-        lead="Fokus-Werkzeuge schützen Zeit für konzentrierte Arbeit. Sie rechnen nur mit Daten, die du selbst erzeugst, etwa Terminen und Fokusblöcken, und was sie zeigen, siehst nur du."
+        lead="Mit Fokus-Sitzungen und Fokusblöcken planst du Zeit für konzentrierte Arbeit. Hinweise rechnen nur mit Daten, die du selbst erzeugst, etwa mit Terminen und deinem Arbeitszeitfenster."
       >
         <Punkte punkte={FOKUS} />
         <Bildschirm
@@ -438,7 +438,7 @@ export default function Seite() {
         anker="umzug"
         flaeche
         titel="Umzug, Geräte und Konto"
-        lead="workly arbeitet mit Standardprotokollen. Dein bisheriges Postfach bleibt verbunden, bis du umstellst, und die Apps auf deinen Geräten greifen weiter auf Mail, Kalender und Kontakte zu."
+        lead="workly arbeitet mit Standardprotokollen. Du ziehst in Schritten um und nutzt die Apps auf deinen Geräten weiter."
       >
         <ul className="ws-fu-karten" role="list">
           {UMZUG.map((karte) => (

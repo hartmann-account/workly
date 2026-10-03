@@ -47,7 +47,7 @@ const SPEICHERORTE: TabellenZeile[] = [
   {
     schluessel: "datenbank",
     kopf: "Aufgaben, Dokumente, Verknüpfungen",
-    zellen: ["Deutschland, Datenbank in Falkenstein und Nürnberg", "Hetzner"],
+    zellen: ["Deutschland, Datenbank in Falkenstein, Sicherungen in Nürnberg", "Hetzner"],
   },
   {
     schluessel: "dateien",
@@ -76,7 +76,7 @@ const SPEICHERORTE: TabellenZeile[] = [
       <>
         Zum Start außerhalb der EU
         <Zusatz>
-          Im Team-Tarif in der EU, über Frankfurt <AbQ4 />
+          Im Team-Tarif in EU-Regionen, ab Frankfurt <AbQ4 />
         </Zusatz>
       </>,
       <>
@@ -138,17 +138,17 @@ export default function Seite() {
       <Seitenkopf
         akzent="Speicherort Deutschland,"
         rest="mit benannten Ausnahmen"
-        lead={`${STANDORT_SATZ} Hier steht, welcher Dienst welche Daten hält und wo.`}
+        lead={`${STANDORT_SATZ} Diese Seite nennt für jeden beteiligten Dienst Ort und Aufgabe.`}
         kacheln={[{ name: "schild" }, { name: "schloss" }]}
       />
 
       {/* 2 · Speicherorte */}
       <Abschnitt
         id="si-orte"
-        titel="Wo deine Daten liegen"
+        titel="Wo deine Inhalte liegen"
         lead={
           <>
-            Für jede Art von Daten stehen hier Ort und Anbieter, Stand <time dateTime={STAND_ISO}>{STAND}</time>.
+            Die Tabelle nennt Ort und Anbieter für jede Art von Daten, Stand <time dateTime={STAND_ISO}>{STAND}</time>.
           </>
         }
       >
@@ -171,16 +171,16 @@ export default function Seite() {
             <h3 className="ws-si-hinweis-titel">Live-Zustand</h3>
             <p className="ws-si-text">
               Der Live-Zustand hält Änderungen, solange ein Dokument offen ist, und gleicht sie zwischen deinen Geräten
-              ab. Beim Schließen, spätestens alle zehn Minuten, speichert workly das Dokument in Falkenstein. 24&nbsp;Stunden
-              nach der letzten Aktivität im Dokument löscht workly den Live-Zustand.
+              ab. workly speichert das Dokument beim Schließen in Falkenstein, bei längerer Arbeit spätestens alle
+              10&nbsp;Minuten. 24&nbsp;Stunden nach der letzten Aktivität im Dokument löscht workly den Live-Zustand.
             </p>
           </li>
           <li className="ws-si-hinweis">
             <h3 className="ws-si-hinweis-titel">Assistent</h3>
             <p className="ws-si-text">
               Der Assistent ist ab Werk aus. Nach deiner Zustimmung erhält Claude je Anfrage nur die nötigen Ausschnitte,
-              mit Platzhaltern statt Adressen und Telefonnummern. Dass Anfragen zum Start außerhalb der EU verarbeitet
-              werden, sagt der Zustimmungsdialog vorher.
+              mit Platzhaltern statt Adressen und Telefonnummern. Der Zustimmungsdialog sagt dir vorher, dass Anthropic
+              die Anfragen zum Start außerhalb der EU verarbeitet.
             </p>
             <p className="ws-si-text">
               <Link to="/assistent">Zur Seite Assistent</Link>
@@ -190,8 +190,9 @@ export default function Seite() {
             <h3 className="ws-si-hinweis-titel">Weitere Dienste bei Cloudflare</h3>
             <p className="ws-si-text">
               Einstellungen, mit denen die Web-App Workspaces zuordnet und Funktionen ein- und ausschaltet, speichert
-              Cloudflare in der EU und hält Kopien davon weltweit vor. Wo Cloudflare Systemmails wie Einladungen und
-              Betriebsdaten ohne Inhalte, etwa Zähler und Kennungen, verarbeitet, prüft workly noch.
+              Cloudflare in der EU und hält Kopien davon weltweit vor. Auch Systemmails wie Einladungen laufen über
+              Cloudflare, ebenso Betriebsdaten ohne Inhalte wie Zähler und Kennungen. Wo Cloudflare sie verarbeitet,
+              prüft workly noch.
             </p>
           </li>
         </ul>
@@ -201,15 +202,14 @@ export default function Seite() {
       <Abschnitt
         id="si-verschluesselung"
         titel="Verschlüsselung und Anmeldung"
-        lead="workly verschlüsselt Daten auf dem Weg und im Speicher. Du meldest dich vor allem mit einem Passkey an."
+        lead="workly verschlüsselt Daten auf dem Weg und im Speicher. Zur Anmeldung kannst du einen Passkey nutzen."
         flaeche
       >
         <ul className="raster-2" role="list">
           <Karte symbol="schloss" titel="Verbindungen">
             <p className="ws-si-text">
-              Zwischen deinem Gerät und workly läuft jede Verbindung verschlüsselt über TLS. Das ist das Verfahren, das der
-              Browser mit dem Schloss in der Adresszeile anzeigt. Auch auf dem Weg von Cloudflare zu den Servern bei
-              Hetzner und zur Datenbank bleiben die Daten verschlüsselt.
+              Zwischen deinem Gerät und workly läuft jede Verbindung verschlüsselt über TLS. Auch auf dem Weg von
+              Cloudflare zu den Servern bei Hetzner und zur Datenbank bleiben die Daten verschlüsselt.
             </p>
           </Karte>
           <Karte symbol="email" titel="E-Mail zwischen Servern">
@@ -231,10 +231,9 @@ export default function Seite() {
           </Karte>
           <Karte symbol="person" titel="Anmeldung">
             <p className="ws-si-text">
-              Der Hauptweg ist ein Passkey. Du meldest dich dann mit Fingerabdruck, Gesicht oder der PIN deines Geräts an
-              statt mit einem Passwort. Dazu kommen ein zweiter Faktor mit Einmalcodes aus einer Authentifizierungs-App und
-              Wiederherstellungscodes für den Fall, dass ein Gerät verloren geht. Mail-Apps melden sich mit eigenen
-              App-Passwörtern an.
+              Mit einem Passkey meldest du dich über Fingerabdruck, Gesicht oder die PIN deines Geräts an. Dazu kommen
+              ein zweiter Faktor mit Einmalcodes aus einer Authentifizierungs-App und Wiederherstellungscodes für den
+              Fall, dass ein Gerät verloren geht. Mail-Apps melden sich mit eigenen App-Passwörtern an.
             </p>
             <p className="ws-si-text">
               Registrierung und Anmeldung schützt ein Dienst von Cloudflare vor automatisierten Zugriffen, ohne
@@ -248,14 +247,14 @@ export default function Seite() {
       <Abschnitt
         id="si-trennung"
         titel="Workspaces getrennt, Zugriffe protokolliert"
-        lead="Jeder Workspace steht für sich. Ein Protokoll, das sich nachträglich nicht ändern lässt, hält wichtige Vorgänge fest."
+        lead="Jeder Workspace steht für sich. Ein Protokoll hält Anmeldungen, Exporte und Zugriffe von Admins fest."
       >
         <ul className="raster-2" role="list">
           <Karte symbol="ordner" titel="Getrennte Workspaces">
             <p className="ws-si-text">
-              Jeder Workspace ist in jeder Schicht von den anderen getrennt, in der Datenbank, im Mailserver, im
-              Dateispeicher und im Live-Zustand der Dokumente. Jeder Datensatz trägt die Kennung seines Workspace, und jede
-              Schicht prüft sie selbst. Links zum Hoch- und Herunterladen von Dateien gelten fünf Minuten.
+              Die Trennung gilt in der Datenbank, im Mailserver, im Dateispeicher und im Live-Zustand der Dokumente.
+              Jeder Datensatz trägt die Kennung seines Workspace, und jede Schicht prüft sie selbst. Links zum Hoch- und
+              Herunterladen von Dateien gelten 5&nbsp;Minuten.
             </p>
           </Karte>
           <Karte symbol="team" titel="Rollen" tag={<AbQ4 />}>
@@ -277,7 +276,7 @@ export default function Seite() {
           </Karte>
           <Karte symbol="schild" titel="Zugang zur Infrastruktur">
             <p className="ws-si-text">
-              Das Team von workly erreicht die Server nur über eine abgesicherte Zugangsschicht von Cloudflare. Die
+              Das Team von workly erreicht die Server nur über den Zugangsdienst Cloudflare Access. Die
               Datenbank hat keinen offenen Zugang zum Internet, und Protokolle der Server enthalten Kennungen, keine
               Inhalte. Neue Versionen der Web-App gehen erst nach Freigabe durch eine zweite Person in Betrieb.
             </p>
@@ -289,7 +288,7 @@ export default function Seite() {
       <Abschnitt
         id="si-sicherungen"
         titel="Sicherungen und Wiederanlauf"
-        lead="Sicherungen liegen an mehreren Orten. Einmal im Monat stellt workly eine davon probeweise wieder her."
+        lead="workly sichert Datenbank und Dateien mehrfach, an Standorten in Deutschland und bei Cloudflare in der EU."
         flaeche
       >
         <div className="ws-si-sicherung">
@@ -364,8 +363,8 @@ export default function Seite() {
           </Karte>
           <Karte symbol="papierkorb" titel="Löschung">
             <p className="ws-si-text">
-              Löschst du dein Konto, entfernt ein automatischer Ablauf deine Daten aus allen Systemen bei Hetzner und
-              Cloudflare.
+              Löschst du dein Konto, entfernt ein automatischer Ablauf deine Daten aus Mailserver, Datenbank und
+              Dateispeicher bei Hetzner und aus den Speichern bei Cloudflare.
             </p>
             <p className="ws-si-text">
               Sicherungen, die deine Daten noch enthalten, laufen nach 35&nbsp;Tagen aus. <span className="tag">geplant</span>
@@ -378,14 +377,14 @@ export default function Seite() {
       <Abschnitt
         id="si-dienstleister"
         titel="Dienstleister und ihre Aufgaben"
-        lead="Die vollständige Liste der Unterauftragsverarbeiter, also aller Firmen, die in unserem Auftrag Daten verarbeiten, veröffentlichen wir vor dem Start."
+        lead="workly veröffentlicht vor dem Start die vollständige Liste der Unterauftragsverarbeiter, also aller Firmen, die im Auftrag von workly Daten verarbeiten."
         flaeche
       >
         <ul className="raster-2" role="list">
           <Karte symbol="ort" titel="Hetzner">
             <dl className="datenliste ws-si-daten">
               <dt>Aufgabe</dt>
-              <dd>Hosting von Postfächern, Terminen, Kontakten, Datenbank und Dateien</dd>
+              <dd>Server und Speicher für Postfächer, Termine, Kontakte, Datenbank und Dateien</dd>
               <dt>Ort</dt>
               <dd>Rechenzentren in Falkenstein und Nürnberg</dd>
             </dl>
@@ -416,8 +415,7 @@ export default function Seite() {
               <dd>Zum Start außerhalb der EU</dd>
             </dl>
             <p className="ws-si-text">
-              workly rechnet damit, dass Anthropic Anfragen bis zu 30&nbsp;Tage aufbewahrt, und klärt die genaue Frist vor der
-              geschlossenen Beta.
+              Wie lange Anthropic Anfragen aufbewahrt, klärt workly vor der geschlossenen Beta.
             </p>
           </Karte>
           <Karte symbol="assistent" titel="Amazon Web Services" tag={<AbQ4 />}>
@@ -425,7 +423,7 @@ export default function Seite() {
               <dt>Aufgabe</dt>
               <dd>Assistent im Team-Tarif über Claude in Amazon Bedrock</dd>
               <dt>Ort</dt>
-              <dd>EU, mit EU-Profil ab Frankfurt</dd>
+              <dd>EU-Regionen, mit EU-Profil ab Frankfurt</dd>
             </dl>
           </Karte>
         </ul>
@@ -458,7 +456,7 @@ export default function Seite() {
               <Link to="/funktionen#fokus">Zu Fokus und Wohlbefinden</Link>
             </p>
           </Karte>
-          <Karte symbol="assistent" titel="Assistent in der EU">
+          <Karte symbol="assistent" titel="Assistent mit EU-Profil">
             <p className="ws-si-text">
               Im Team-Tarif läuft der Assistent über Claude in Amazon Bedrock mit EU-Profil ab Frankfurt. Er bleibt aus, bis
               die Inhaberin oder der Inhaber ihn für den Workspace freigibt und jede Person selbst zustimmt.

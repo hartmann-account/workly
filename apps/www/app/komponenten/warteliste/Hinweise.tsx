@@ -9,11 +9,11 @@ const SCHRITTE = [
   },
   {
     titel: "Gespräch, wenn du magst",
-    text: "Bis Dezember 2026 sprechen wir mit 25 Selbstständigen über ihre Arbeitsweise. Hast du im Formular zugestimmt, fragen wir dich vielleicht an.",
+    text: "Bis Dezember 2026 führen wir 25 Gespräche über Arbeitsweisen. Hast du im Formular ein Gespräch angekreuzt, fragen wir dich vielleicht per E-Mail an.",
   },
   {
     titel: "Einladung zur Beta",
-    text: "Die geschlossene Beta ab Juni 2027 hat Platz für 200 bis 500 Personen. Wir laden ein, wenn Plätze frei werden, und richten uns nach der Reihenfolge der Einträge und nach der Arbeitssituation. Ein Eintrag ist noch keine Zusage.",
+    text: "Die geschlossene Beta ab Juni 2027 hat Platz für 200 bis 500 Personen. Wir laden per E-Mail ein; ein Eintrag ist noch keine Zusage für einen Platz.",
   },
 ];
 
@@ -57,7 +57,7 @@ export function DeineAngaben({ turnstile }: { turnstile: boolean }) {
         <dt>Widerruf</dt>
         <dd>Jederzeit und ohne Begründung. Danach löschen wir deinen Eintrag.</dd>
         <dt>Weitergabe</dt>
-        <dd>Wir geben deine Angaben nicht weiter.</dd>
+        <dd>Cloudflare verarbeitet sie in unserem Auftrag; an andere geben wir sie nicht weiter.</dd>
         {turnstile ? (
           <>
             <dt>Schutz vor Bots</dt>

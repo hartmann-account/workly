@@ -23,9 +23,9 @@ export default function Seite() {
   return (
     <>
       <Seitenkopf
-        akzent="Ein Abonnement"
-        rest="für Mail, Kalender, Aufgaben und Dokumente"
-        lead="workly plant vier Tarife mit festen Preisen je Nutzer. Buchbar sind sie ab September 2027, Team ab Q4 2027. Auf der Warteliste merkst du einen Tarif vor."
+        akzent="Ein Tarif"
+        rest="für E-Mail, Kalender, Aufgaben und Dokumente"
+        lead="workly plant vier Tarife mit festen Preisen je Nutzer, Rabatt bei jährlicher Zahlung und einem Kontingent für den Assistenten. Bis zum Start merkst du auf der Warteliste einen Tarif vor."
       />
 
       <div className="ws-abschnitt ws-ta-tarife">

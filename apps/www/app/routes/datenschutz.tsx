@@ -43,7 +43,7 @@ export default function Seite() {
         </h1>
         <p className="ws-lead">
           Diese Hinweise gelten für die Website von workly und für die Warteliste. Für workly selbst
-          veröffentlichen wir eigene Datenschutzhinweise, bevor die geschlossene Beta beginnt.
+          veröffentlichen wir später eigene Datenschutzhinweise.
         </p>
       </section>
 
@@ -76,9 +76,9 @@ export default function Seite() {
             <p>
               Wir setzen keine Cookies, legen keine Nutzungsprofile an und binden keine Analyse-Werkzeuge ein. Die
               Schrift liefert diese Website selbst aus; dein Browser verbindet sich dafür nicht mit Google Fonts oder
-              einem anderen Schriftdienst. Wir speichern nur die Angaben, die du in die Warteliste einträgst, und
-              Cloudflare hält technische Protokolle bis zu 7&nbsp;Tage; deine Wahl zwischen heller und dunkler Darstellung
-              bleibt in deinem Browser.
+              einem anderen Schriftdienst. Wir speichern nur die Angaben, die du in die Warteliste einträgst.
+              Cloudflare hält technische Protokolle bis zu 7&nbsp;Tage, und deine Wahl zwischen heller und dunkler
+              Darstellung bleibt in deinem Browser.
             </p>
           </Teil>
 
@@ -94,7 +94,7 @@ export default function Seite() {
               Abs.&nbsp;1 lit.&nbsp;f Datenschutz-Grundverordnung, DSGVO).
             </p>
             <p>
-              Cloudflare, Inc. sitzt in den USA, deshalb können Daten in die USA übermittelt werden. Grundlage
+              Cloudflare, Inc. sitzt in den USA und kann Daten deshalb in die USA übermitteln. Grundlage
               dafür ist der Angemessenheitsbeschluss der EU-Kommission zum <span lang="en">EU-U.S. Data Privacy Framework</span>,
               an dem Cloudflare teilnimmt (Art.&nbsp;45 DSGVO). Ergänzend gelten die Standardvertragsklauseln der
               EU-Kommission aus unserem Vertrag zur Auftragsverarbeitung mit Cloudflare (Art.&nbsp;46 Abs.&nbsp;2 lit.&nbsp;c DSGVO).
@@ -105,8 +105,8 @@ export default function Seite() {
             <p>
               Ohne eigene Wahl folgt die Website der Einstellung deines Systems und speichert nichts. Wählst du mit dem
               Knopf „Dunkle Darstellung“ selbst, legt dein Browser deine Wahl in seinem lokalen Speicher ab
-              (<code lang="en">localStorage</code>, Eintrag „workly-thema“). Die Angabe bleibt auf deinem Gerät und wird
-              nicht an uns übertragen.
+              (<code lang="en">localStorage</code>, Eintrag „workly-thema“). Die Angabe bleibt auf deinem Gerät; dein Browser
+              schickt sie nicht an uns.
             </p>
             <p>
               Nach unserer Einschätzung ist diese Speicherung unbedingt erforderlich, damit die Website die Darstellung
@@ -125,7 +125,7 @@ export default function Seite() {
               <li>deine Arbeitssituation (Pflicht)</li>
               <li>den Tarif, der dich interessiert (freiwillig)</li>
               <li>ob du zu einem Gespräch über deine Arbeitsweise bereit bist (freiwillig)</li>
-              <li>den Zeitpunkt deines Eintrags sowie Zeitpunkt und Wortlaut deiner Einwilligung</li>
+              <li>den Zeitpunkt deines Eintrags sowie Zeitpunkt und Fassung deiner Einwilligung</li>
             </ul>
             <p>Mit dem Eintrag speichern wir weder deine IP-Adresse noch Angaben zu deinem Browser.</p>
             <p>

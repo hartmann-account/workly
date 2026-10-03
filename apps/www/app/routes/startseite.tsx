@@ -32,7 +32,7 @@ const ACHSEN = [
     farbe: "kategorie-blau",
     punkte: [
       "E-Mail per Tastendruck als Aufgabe oder Termin",
-      "Heute: Termine, fällige Aufgaben und markierte Mails in einer Zeitleiste",
+      "Tagesansicht Heute mit Terminen, fälligen Aufgaben und markierten Mails",
       "Vorschläge des Assistenten, übernommen erst nach deinem Klick",
     ],
   },
@@ -40,18 +40,18 @@ const ACHSEN = [
     name: "Freude",
     farbe: "kategorie-pink",
     punkte: [
-      "Tastenkürzel für jede häufige Aktion",
+      "Tastenkürzel für Suche, Befehlszeile und Posteingang",
       "Leere Bereiche nennen den nächsten Schritt",
-      "Tagesabschluss mit allem, was du erledigt hast",
+      "Tagesabschluss mit Erledigtem und Offenem",
     ],
   },
   {
     name: "Fokus und Wohlbefinden",
     farbe: "kategorie-violett",
     punkte: [
-      "Fokus-Sitzung mit 25, 50 oder 90 Minuten",
-      "Fokusblöcke gelten im Kalender als belegt",
-      "Abends geschriebene Mails gehen auf Wunsch am nächsten Morgen um 08:00 Uhr raus",
+      "Fokus-Sitzung mit 25, 50 oder 90 Minuten",
+      "Fokusblöcke gelten nach außen als belegt",
+      "Abends geschriebene Mails sendet workly auf Wunsch erst um 08:00 Uhr",
     ],
   },
 ];
@@ -68,7 +68,7 @@ export default function Startseite() {
               <br /> Termine und Aufgaben.
             </h1>
             <ul className="he-werte" role="list" aria-label="Wofür workly steht">
-              <li className="kategorie kategorie-versal kategorie-blau">Effizient</li>
+              <li className="kategorie kategorie-versal kategorie-blau">Effizienz</li>
               <li className="kategorie kategorie-versal kategorie-pink">Freude</li>
               <li className="kategorie kategorie-versal kategorie-violett">Fokus</li>
             </ul>
@@ -154,7 +154,7 @@ export default function Startseite() {
       <Abschnitt
         id="fall-titel"
         titel="Von der Anfrage zum geplanten Dienstag"
-        lead="So wird aus einer Kundenanfrage in drei Schritten geplante Arbeit, ohne dass du das Programm wechselst."
+        lead="Eine Kundin bittet per Mail um ein Angebot. In drei Schritten planst du die Arbeit daran, ohne das Programm zu wechseln."
         flaeche
         className="ws-st-fall"
       >
@@ -167,12 +167,12 @@ export default function Startseite() {
               <h3 className="ws-st-schritt-titel">Aus der Mail wird eine Aufgabe</h3>
               <p>
                 Aylin Kaya bittet um ein Angebot bis Freitag, 09.10.2026. Der Assistent schlägt dazu eine Aufgabe mit
-                Fälligkeit vor, und du übernimmst sie per Klick oder mit der Taste A.
+                Fälligkeit und Projekt vor, die du mit einem Klick übernimmst.
               </p>
             </div>
             <Bildschirm
               className="ws-st-abbildung"
-              beschreibung="Nachgebaute Ansicht: Mail von Aylin Kaya mit dem Vorschlag des Assistenten, die Aufgabe „Angebot an Frau Kaya senden“, fällig am Freitag, 09.10.2026, anzulegen."
+              beschreibung="Mail von Aylin Kaya mit dem Vorschlag des Assistenten, die Aufgabe „Angebot an Frau Kaya senden“, fällig am Freitag, 09.10.2026, anzulegen."
             >
               <MailMitVorschlag />
             </Bildschirm>
@@ -184,13 +184,13 @@ export default function Startseite() {
               </span>
               <h3 className="ws-st-schritt-titel">Ein Zeitblock am Dienstag</h3>
               <p>
-                Du ziehst die Aufgabe in eine Lücke am Dienstag, 06.10.2026. Daraus wird ein Zeitblock im Kalender,
-                und die Zeit ist belegt.
+                Du ziehst die Aufgabe in eine Lücke am Dienstag, 06.10.2026. Im Kalender steht sie danach als
+                Zeitblock, 11:30 – 12:30 Uhr.
               </p>
             </div>
             <Bildschirm
               className="ws-st-abbildung"
-              beschreibung="Nachgebaute Ansicht: Zeitleiste für Dienstag, 06.10.2026 mit der eingeplanten Aufgabe „Angebot an Frau Kaya senden“, 14:00 – 15:30 Uhr, zwischen einem Termin und einem Fokusblock."
+              beschreibung="Zeitleiste für Dienstag, 06.10.2026, mit der eingeplanten Aufgabe „Angebot an Frau Kaya senden“, 11:30 – 12:30 Uhr, nach einem Termin und einem Fokusblock."
             >
               <DienstagZeitleiste />
             </Bildschirm>
@@ -202,21 +202,22 @@ export default function Startseite() {
               </span>
               <h3 className="ws-st-schritt-titel">Das Angebot hängt an der Aufgabe</h3>
               <p>
-                Mail, Aufgabe, Termin und Angebotsdokument verweisen aufeinander. Jede Verknüpfung ist von beiden
-                Seiten aus sichtbar, im Dokument wie in der Mail.
+                Du schreibst das Angebot als Dokument und verknüpfst es mit der Aufgabe. Jede Verknüpfung siehst du
+                von beiden Seiten, in der Mail wie im Dokument.
               </p>
             </div>
             <Bildschirm
               className="ws-st-abbildung"
-              beschreibung="Nachgebaute Ansicht: Dokument „Angebot Website“ mit den verknüpften Objekten Mail, Aufgabe und Termin; die Mail von Aylin Kaya zeigt umgekehrt Aufgabe, Termin und Dokument."
+              beschreibung="Dokument „Angebot Website“ mit den verknüpften Objekten Mail, Aufgabe und Termin; die Mail von Aylin Kaya zeigt umgekehrt Aufgabe, Termin und Dokument."
             >
               <AngebotVerknuepft />
             </Bildschirm>
           </li>
         </ol>
         <p className="ws-fussnote ws-st-fall-fussnote">
-          Der Assistent ist ab Werk aus. Ohne ihn macht die Taste A aus der Mail eine Aufgabe; Titel und Fälligkeit
-          trägst du dann selbst ein.
+          Der Assistent ist ab Werk aus. Nach deiner Zustimmung macht er in Pro Vorschläge zu bis zu 25 eingehenden
+          Mails am Tag, in Privat nur zu Mails, die du auswählst. Ohne Assistent legst du mit der Taste A eine Aufgabe
+          aus der Mail an und trägst Titel und Fälligkeit selbst ein.
         </p>
       </Abschnitt>
 
@@ -237,8 +238,8 @@ export default function Startseite() {
               <li>Bewertet weder Leistung noch Stimmung</li>
             </ul>
             <p className="ws-fussnote">
-              Zum Start verarbeitet die Anthropic-API KI-Anfragen außerhalb der EU. Der Zustimmungsdialog sagt dir das,
-              bevor der Assistent startet.
+              Zum Start verarbeitet die Anthropic-API KI-Anfragen außerhalb der EU. Das sagt dir der Zustimmungsdialog,
+              bevor du den Assistenten einschaltest.
             </p>
             <Link className="ws-st-link" to="/assistent" prefetch="intent">
               Wie der Assistent arbeitet
@@ -247,7 +248,7 @@ export default function Startseite() {
           </div>
           <Bildschirm
             className="ws-st-abbildung"
-            beschreibung="Nachgebaute Ansicht: Zusammenfassung des Assistenten zum Verlauf „Angebot Website“ mit Stand, offener Frage und Zusage, jeder Punkt mit Verweis auf die Nachricht."
+            beschreibung="Zusammenfassung des Assistenten zum Verlauf „Angebot Website“ mit Stand, offener Frage und Zusage, jeder Punkt mit Verweis auf die Nachricht."
           >
             <VerlaufZusammenfassung />
           </Bildschirm>

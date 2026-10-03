@@ -13,8 +13,16 @@ function lage(werte: Record<string, string>): CSSProperties {
   return werte as CSSProperties;
 }
 
-/** Kopf einer Nachricht im Lesebereich: Betreff, Absenderin, Zeit. */
-function MailKopf({ betreff }: { betreff: string }) {
+/** Kopf einer Nachricht im Lesebereich: Betreff, Absenderin, Zeit (Standard: erste Mail vom 02.10.2026). */
+function MailKopf({
+  betreff,
+  zeit = "02.10.2026, 09:14 Uhr",
+  iso = "2026-10-02T09:14",
+}: {
+  betreff: string;
+  zeit?: string;
+  iso?: string;
+}) {
   return (
     <div className="pe-lesen-kopf">
       <p className="pe-lesen-betreff">{betreff}</p>
@@ -24,8 +32,8 @@ function MailKopf({ betreff }: { betreff: string }) {
           <p className="pe-lesen-name">Aylin Kaya</p>
           <p className="pe-lesen-an">aylin.kaya@kaya.example</p>
         </div>
-        <time className="pe-lesen-zeit" dateTime="2026-10-02T09:14">
-          02.10.2026, 09:14 Uhr
+        <time className="pe-lesen-zeit" dateTime={iso}>
+          {zeit}
         </time>
       </div>
     </div>
@@ -63,9 +71,12 @@ export function MailMitVorschlag() {
   );
 }
 
-const STUNDEN = ["13", "14", "15", "16", "17"];
+const STUNDEN = ["09", "10", "11", "12", "13"];
 
-/** Schritt 2: Zeitleiste des Dienstags mit dem eingeplanten Aufgabenblock (`.termin-aufgabe`, gestrichelt). */
+/**
+ * Schritt 2: Zeitleiste des Dienstags mit dem eingeplanten Aufgabenblock (`.termin-aufgabe`, gestrichelt).
+ * Derselbe Tag wie in den Abbildungen der Seite Funktionen (Heute, Kalender, Verknüpfungen).
+ */
 export function DienstagZeitleiste() {
   return (
     <div className="karte ws-st-tag">
@@ -73,7 +84,7 @@ export function DienstagZeitleiste() {
         <p className="karte-titel">Dienstag, 06.10.2026</p>
         <span className="ta-kopf-info">KW 41</span>
       </div>
-      <div className="ta-zl" style={lage({ "--ta-von": "13", "--ta-bis": "17" })}>
+      <div className="ta-zl" style={lage({ "--ta-von": "9", "--ta-bis": "13" })}>
         <ol className="ta-zl-stunden">
           {STUNDEN.map((h) => (
             <li key={h} style={lage({ "--h": h })}>
@@ -82,34 +93,34 @@ export function DienstagZeitleiste() {
           ))}
         </ol>
         <ol className="ta-zl-bloecke">
-          <li className="ta-zl-eintrag ta-zl-kurz" style={lage({ "--von": "13", "--bis": "13.75" })}>
+          <li className="ta-zl-eintrag ta-zl-kurz" style={lage({ "--von": "9", "--bis": "9.5" })}>
             <span className="termin">
               <span className="termin-typ">
                 <SymbolGrafik name="kalender" className="" />
               </span>
-              <span className="termin-titel">Termin Studio Nord</span>
-              <span className="termin-zeit">13:00</span>
+              <span className="termin-titel">Abstimmung Studio Nord</span>
+              <span className="termin-zeit">09:00</span>
             </span>
           </li>
-          <li className="ta-zl-eintrag" style={lage({ "--von": "14", "--bis": "15.5" })}>
-            <span className="termin termin-aufgabe">
-              <span className="termin-titel">Angebot an Frau Kaya senden</span>
-              <span className="termin-zeit">14:00 – 15:30 Uhr</span>
-              <span className="termin-typ">
-                <SymbolGrafik name="aufgaben" className="" />
-                Aufgabe
-              </span>
-            </span>
-          </li>
-          <li className="ta-zl-eintrag" style={lage({ "--von": "16", "--bis": "17" })}>
+          <li className="ta-zl-eintrag" style={lage({ "--von": "10", "--bis": "11.5" })}>
             <span className="termin termin-fokus">
-              <span className="termin-titel">Entwürfe Studio Nord</span>
+              <span className="termin-titel">Angebot Kaya überarbeiten</span>
               <span className="termin-zeit">
-                16:00 – 17:00 Uhr ·{" "}
+                10:00 – 11:30 Uhr ·{" "}
                 <span className="termin-typ">
                   <SymbolGrafik name="fokus" className="" />
                   Fokus
                 </span>
+              </span>
+            </span>
+          </li>
+          <li className="ta-zl-eintrag" style={lage({ "--von": "11.5", "--bis": "12.5" })}>
+            <span className="termin termin-aufgabe">
+              <span className="termin-titel">Angebot an Frau Kaya senden</span>
+              <span className="termin-zeit">11:30 – 12:30 Uhr</span>
+              <span className="termin-typ">
+                <SymbolGrafik name="aufgaben" className="" />
+                Aufgabe
               </span>
             </span>
           </li>
@@ -168,7 +179,7 @@ export function AngebotVerknuepft() {
               <span className="dok-verknuepft-text">
                 <span className="dok-verknuepft-typ">Termin</span>
                 <span className="dok-verknuepft-titel">Angebot an Frau Kaya senden</span>
-                <span className="dok-verknuepft-meta">Di., 06.10.2026, 14:00 – 15:30 Uhr</span>
+                <span className="dok-verknuepft-meta">Di., 06.10.2026, 11:30 – 12:30 Uhr</span>
               </span>
             </a>
           </li>
@@ -188,7 +199,7 @@ export function AngebotVerknuepft() {
             <a className="pe-chip">
               <SymbolGrafik name="kalender" />
               <span className="pe-chip-typ">Termin</span>
-              Di., 14:00 Uhr
+              Di., 11:30 Uhr
             </a>
           </li>
           <li>
@@ -208,13 +219,13 @@ export function AngebotVerknuepft() {
 export function VerlaufZusammenfassung() {
   return (
     <div className="pe-lesen">
-      <MailKopf betreff="Re: Angebot Website" />
+      <MailKopf betreff="Re: Angebot Website" zeit="05.10.2026, 17:48 Uhr" iso="2026-10-05T17:48" />
       <div className="vorschlag">
         <p className="vorschlag-kopf">
           <SymbolGrafik name="assistent" className="" />
           Zusammenfassung des Assistenten
         </p>
-        <p className="vorschlag-titel">Verlauf „Angebot Website“ · 7 Nachrichten</p>
+        <p className="vorschlag-titel">Verlauf „Angebot Website“ · 7 Nachrichten</p>
         <dl className="datenliste pe-zf">
           <dt>Stand</dt>
           <dd>

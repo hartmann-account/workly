@@ -26,7 +26,7 @@ export const ARBEITSSITUATIONEN = [
   {
     wert: "studium",
     titel: "Studium oder Ausbildung",
-    beschreibung: `Für Studierende geplant: Free und 50${NBSP}% Rabatt auf Privat.`,
+    beschreibung: `Geplant sind Free und für Studierende 50${NBSP}% Rabatt auf Privat.`,
   },
   { wert: "anderes", titel: "Etwas anderes", beschreibung: "" },
 ] as const;
