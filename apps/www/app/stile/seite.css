@@ -94,3 +94,54 @@ main:focus { outline: none; }
 /* ---------- Fehlerseite ---------- */
 .ws-fehler-aktion { margin: var(--abstand-8) 0 0; }
 .ws-fehler-stapel { margin-top: var(--abstand-8); padding: var(--abstand-4); overflow-x: auto; border-radius: var(--radius-mittel); background: var(--flaeche); font: 400 13px/20px var(--font-mono); }
+
+/* ---------- Seitenkopf der Unterseiten (ws-unterkopf) ---------- */
+.ws-unterkopf { padding-block: calc(var(--abstand-16) + var(--abstand-4)) var(--abstand-12); }
+.ws-unterkopf-innen { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--abstand-12); }
+.ws-unterkopf-text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-5); min-width: 0; }
+.ws-unterkopf-titel { margin: 0; max-width: 14em; font-family: var(--font-sans); font-weight: 700; font-size: clamp(32px, 3.2vw + 14px, 60px); line-height: 1.2; letter-spacing: -0.015em; color: var(--text); text-wrap: balance; }
+.ws-unterkopf-aktionen { display: flex; flex-wrap: wrap; gap: var(--abstand-3); margin-top: var(--abstand-1); }
+.ws-unterkopf-kacheln { display: grid; grid-template-columns: repeat(2, auto); gap: var(--abstand-6); padding: var(--abstand-6); }
+.ws-unterkopf-kacheln > :nth-child(2n) { transform: translateY(50%); }
+
+@media (max-width: 900px) {
+  .ws-unterkopf { padding-block: var(--abstand-12) var(--abstand-8); }
+  .ws-unterkopf-innen { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-6); }
+  .ws-unterkopf-kacheln { order: -1; display: flex; gap: var(--abstand-3); padding: 0; }
+  .ws-unterkopf-kacheln > :nth-child(2n) { transform: none; }
+  .ws-unterkopf-kacheln .kachel-gross { --groesse: var(--kachel); box-shadow: var(--glow-blau); }
+}
+@media (max-width: 520px) {
+  .ws-unterkopf { padding-block: var(--abstand-8) var(--abstand-6); }
+  .ws-unterkopf-aktionen { width: 100%; }
+  .ws-unterkopf-aktionen .knopf { flex: 1 1 100%; }
+}
+
+/* ---------- Bildschirm: nachgebaute Portal-Ansicht ---------- */
+.ws-bildschirm { display: flex; flex-direction: column; gap: var(--abstand-3); margin: 0; min-width: 0; }
+.ws-bildschirm-flaeche { width: 100%; padding: var(--abstand-5); border: 1px solid var(--linie); border-radius: var(--radius-karte); background: var(--grund); overflow: hidden; pointer-events: none; user-select: none; }
+.ws-abschnitt-flaeche .ws-bildschirm-flaeche { border-color: transparent; }
+.ws-bildschirm-text { font: 500 14px/20px var(--font-sans); color: var(--text-2); }
+@media (max-width: 520px) { .ws-bildschirm-flaeche { padding: var(--abstand-3); border-radius: var(--radius-karte-mobil); } }
+
+/* ---------- Warteliste-Band ---------- */
+.ws-band { padding-top: var(--abstand-8); }
+.ws-band-karte { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--abstand-8); padding: var(--abstand-12); }
+.ws-band-text { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.ws-band-titel { margin: 0; font: 700 32px/40px var(--font-sans); letter-spacing: -0.01em; color: #ffffff; text-wrap: balance; }
+.ws-band-lead { margin: 0; max-width: 36em; font: 500 17px/26px var(--font-sans); color: #ffffff; }
+.ws-band-aktionen { display: flex; flex-direction: column; align-items: center; gap: var(--abstand-3); }
+.ws-band-link { display: inline-flex; align-items: center; min-height: var(--knopf-hoehe); color: #ffffff; font: 600 15px/20px var(--font-sans); text-decoration: underline; text-underline-offset: 3px; }
+.ws-band-link:hover { text-decoration-thickness: 2px; }
+@media (max-width: 900px) { .ws-band-karte { grid-template-columns: minmax(0, 1fr); padding: var(--abstand-8); } .ws-band-aktionen { align-items: flex-start; } }
+@media (max-width: 520px) {
+  .ws-band-karte { padding: var(--abstand-6) var(--abstand-5); }
+  .ws-band-titel { font-size: 26px; line-height: 32px; }
+  .ws-band-aktionen { align-items: stretch; }
+  .ws-band-aktionen .knopf { width: 100%; }
+  .ws-band-link { justify-content: center; }
+}
+main:has(> .ws-band:last-child) + .ws-fuss { margin-top: 0; }
+
+/* Zeitstrahl: Titel der Marken-Skala fließend bis 900 px */
+.ws-zs-titel { font-size: clamp(28px, 2.6vw + 15px, 52px); line-height: 1.24; color: var(--akzent-text); }
