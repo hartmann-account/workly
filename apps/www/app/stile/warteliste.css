@@ -1,0 +1,73 @@
+/* Warteliste (/warteliste) – Präfix ws-wl-
+   Formular links, Ablauf und Datenschutz-Kurzfassung rechts; bis 900 px untereinander, Formular zuerst.
+   Nur Tokens; Abstände aus der Skala abstand-1 … abstand-16. */
+
+.ws-wl-raster { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; gap: var(--abstand-16); }
+.ws-wl-haupt { min-width: 0; max-width: var(--lesen-max); }
+.ws-wl-neben { display: flex; flex-direction: column; gap: var(--luecke); min-width: 0; }
+
+/* ---------- Formular ---------- */
+.ws-wl-formular { display: flex; flex-direction: column; gap: var(--abstand-6); }
+.ws-wl-formular .meldung { font-size: 15px; line-height: 22px; }
+.ws-wl-formular .fehlerkasten a { overflow-wrap: anywhere; }
+.ws-wl-gruppe { gap: var(--abstand-3); }
+.ws-wl-gruppe > legend { margin-bottom: var(--abstand-1); }
+.ws-wl-gruppe .option-titel { overflow-wrap: anywhere; }
+
+/* Pflicht-Kästchen: abgesetzt durch eine Linie; Hilfe und Fehler stehen bündig mit dem Text, nicht mit dem Kästchen. */
+.ws-wl-zustimmung { display: flex; flex-direction: column; gap: var(--abstand-5); padding-top: var(--abstand-6); border-top: 1px solid var(--linie); }
+.ws-wl-kaestchen { display: flex; flex-direction: column; gap: var(--abstand-2); }
+.ws-wl-einzug { padding-left: var(--abstand-8); }
+
+/* „E-Mail“ nicht nach „E-“ umbrechen (siehe komponenten/warteliste/Wort.tsx). */
+.ws-wl-wort { white-space: nowrap; }
+
+/* Honigtopf: aus dem Bild genommen wie .sr-only, zusätzlich aria-hidden und tabindex -1 im Markup. */
+.ws-wl-honig { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+.ws-wl-pruefung { max-width: 100%; }
+.ws-wl-senden { padding-top: var(--abstand-2); }
+
+/* ---------- Erfolg ---------- */
+.ws-wl-erfolg { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-5); }
+.ws-wl-meldung { align-self: stretch; padding: var(--abstand-5); font-size: 15px; line-height: 22px; }
+.ws-wl-adresse { font-weight: 700; overflow-wrap: anywhere; }
+.ws-wl-erfolg-aktion { align-self: stretch; }
+.ws-wl-erfolg-text { max-width: 36em; font: 500 16px/26px var(--font-sans); color: var(--text); }
+
+/* ---------- Kästen rechts ---------- */
+.ws-wl-kasten { display: flex; flex-direction: column; gap: var(--abstand-5); }
+.ws-wl-kasten-titel { font: 700 20px/28px var(--font-sans); color: var(--text); text-wrap: balance; }
+
+.ws-wl-schritte { display: flex; flex-direction: column; gap: var(--abstand-5); margin: 0; padding: 0; list-style: none; }
+.ws-wl-schritt { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--abstand-3); row-gap: var(--abstand-1); }
+.ws-wl-nummer { grid-row: 1 / span 2; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: var(--radius-rund);
+  background: var(--akzent-zart); color: var(--akzent-auf-zart); font: 700 14px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+.ws-wl-schritt-titel { font: 600 16px/28px var(--font-sans); color: var(--text); }
+.ws-wl-schritt-text { font: 500 15px/22px var(--font-sans); color: var(--text-2); hyphens: auto; }
+.ws-wl-kasten .ws-fussnote { margin: 0; }
+
+/* Datenliste immer untereinander: Bezeichnung klein über dem Wert, damit sie auch in schmalen Spalten trägt. */
+.ws-wl-daten { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.ws-wl-daten dt { font: 600 13px/18px var(--font-sans); color: var(--text-2); }
+.ws-wl-daten dd { margin: var(--abstand-1) 0 var(--abstand-4); font: 500 15px/22px var(--font-sans); color: var(--text); hyphens: auto; }
+.ws-wl-daten dd:last-child { margin-bottom: 0; }
+.ws-wl-kasten-link { font: 600 15px/22px var(--font-sans); }
+
+@media (max-width: 1100px) { .ws-wl-raster { gap: var(--abstand-12); } }
+
+@media (max-width: 900px) {
+  .ws-wl-raster { grid-template-columns: minmax(0, 1fr); }
+  .ws-wl-neben { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; }
+}
+
+@media (max-width: 520px) {
+  .ws-wl-raster { gap: var(--abstand-8); }
+  .ws-wl-kasten { gap: var(--abstand-4); }
+  .ws-wl-kasten-titel { font-size: 18px; line-height: 24px; }
+  .ws-wl-meldung { padding: var(--abstand-4); }
+}
+
+@media (forced-colors: active) {
+  .ws-wl-kasten, .ws-wl-nummer { outline: 1px solid transparent; }
+}

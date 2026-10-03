@@ -13,6 +13,8 @@ export function Kopf() {
   const ausloeser = useRef<HTMLButtonElement>(null);
   const [offen, setOffen] = useState(false);
   const ort = useLocation();
+  // Auf der Warteliste selbst kein zweiter Primärknopf in der Kopfleiste.
+  const aufWarteliste = ort.pathname === "/warteliste";
 
   const schliessen = () => blatt.current?.close();
 
@@ -42,9 +44,11 @@ export function Kopf() {
 
         <div className="ws-kopf-aktionen">
           <ThemaUmschalter />
-          <Link to="/warteliste" className="knopf knopf-primaer knopf-klein ws-kopf-warteliste" prefetch="intent">
-            Warteliste beitreten
-          </Link>
+          {aufWarteliste ? null : (
+            <Link to="/warteliste" className="knopf knopf-primaer knopf-klein ws-kopf-warteliste" prefetch="intent">
+              Warteliste beitreten
+            </Link>
+          )}
           <button
             ref={ausloeser}
             type="button"
@@ -104,10 +108,14 @@ export function Kopf() {
             ))}
           </ul>
         </nav>
-        <hr className="mo-blatt-trenner" />
-        <Link to="/warteliste" className="knopf knopf-primaer knopf-block" onClick={schliessen}>
-          Warteliste beitreten
-        </Link>
+        {aufWarteliste ? null : (
+          <>
+            <hr className="mo-blatt-trenner" />
+            <Link to="/warteliste" className="knopf knopf-primaer knopf-block" onClick={schliessen}>
+              Warteliste beitreten
+            </Link>
+          </>
+        )}
       </dialog>
     </header>
   );
