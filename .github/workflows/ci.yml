@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Tokens aktuell
+        run: pnpm --filter @workly/ui test
+      - name: Typprüfung
+        run: pnpm --filter @workly/www typecheck
+      - name: Chromium für Playwright
+        run: pnpm --filter @workly/www exec playwright install --with-deps chromium
+      - name: Ende-zu-Ende-Tests (Desktop, Telefon, 360 px)
+        run: pnpm --filter @workly/www test

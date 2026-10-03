@@ -47,7 +47,7 @@ test("unbekannte Adresse liefert 404 mit Weg zur Startseite", async ({ page }) =
   const antwort = await page.goto("/gibt-es-nicht");
   expect(antwort?.status()).toBe(404);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("gibt es nicht");
-  await expect(page.getByRole("link", { name: "Zur Startseite" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Zur Startseite", exact: true })).toBeVisible();
 });
 
 test("robots.txt sperrt Suchmaschinen bis zur Freigabe", async ({ request }) => {
