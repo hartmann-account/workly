@@ -1,0 +1,87 @@
+/* Seite Tarife (Präfix ws-ta-)
+   Ergänzt bundle.css und seite.css. Nur Tokens; Breakpoints wie im Designsystem: 900, 640, 520 px.
+   Vergleich: ab 901 px Tabelle (.tabelle), bis 900 px je Tarif eine Karte (.tabelle-karte mit dl), damit die
+   Seite am Telefon nie breiter wird als das Fenster. */
+
+/* ---------- Tarifkarten direkt unter dem Seitenkopf ---------- */
+.ws-ta-tarife { padding-top: var(--abstand-4); }
+.ws-ta-tarife .tk-titel { text-wrap: balance; }
+
+/* Abschnitt nach einem Flächenwechsel (weiß → grau → weiß) behält bis 520 px seinen Abstand oben.
+   seite.css setzt dort für jedes .ws-abschnitt + .ws-abschnitt padding-top: 0, auch beim Wechsel der Fläche. */
+@media (max-width: 520px) {
+  .ws-abschnitt.ws-ta-nach-wechsel { padding-top: var(--abstand-12); }
+}
+
+/* ---------- Vergleich ---------- */
+.ws-ta-vergleich { display: flex; flex-direction: column; gap: var(--abstand-8); min-width: 0; }
+
+/* Tabelle ab 901 px: feste Spaltenbreiten, damit die vier Tarife gleich breit stehen */
+.ws-ta-tabelle table { table-layout: fixed; }
+.ws-ta-spalte-leistung { width: 28%; }
+.ws-ta-tabelle thead th { padding: var(--abstand-4); vertical-align: bottom; }
+.ws-ta-tabelle thead th.ws-ta-tarif { white-space: normal; }
+.ws-ta-tarif-name { display: block; font: 700 18px/24px var(--font-sans); color: var(--text); }
+.ws-ta-tarif .tag { margin-top: var(--abstand-1); }
+.ws-ta-tabelle tbody th,
+.ws-ta-tabelle td { padding: var(--abstand-3) var(--abstand-4); vertical-align: top; overflow-wrap: break-word; }
+.ws-ta-tabelle td { color: var(--text); }
+
+/* Zelleninhalte, gemeinsam für Tabelle und Karten */
+.ws-ta-betrag { display: block; font: 700 20px/26px var(--font-sans); color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ws-ta-zusatz { display: block; margin-top: var(--abstand-1); font: 500 14px/20px var(--font-sans); color: var(--text-2); }
+.ws-ta-fehlt { color: var(--text-2); }
+.ws-ta-enthalten { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-1); }
+.ws-ta-enthalten-wort { display: inline-flex; align-items: center; gap: var(--abstand-2); white-space: nowrap; }
+.ws-ta-enthalten .symbol { color: var(--text); }
+
+/* Karten bis 900 px: zwei Spalten, bis 640 px eine */
+.ws-ta-karten { display: none; margin: 0; padding: 0; list-style: none; }
+.ws-ta-vergleich .ws-ta-karte { background: var(--grund); gap: var(--abstand-4); }
+.ws-ta-karte-titel { font: 700 20px/26px var(--font-sans); }
+.ws-ta-daten { display: grid; margin: 0; font: 500 15px/22px var(--font-sans); }
+/* Bezeichnung links, Wert rechts; kurze Werte („–“, „5“) lassen der Bezeichnung die Breite, lange Werte brechen
+   spätestens bei 58 % der Zeile um. */
+.ws-ta-daten-zeile { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--abstand-4); padding-block: var(--abstand-3); border-top: 1px solid var(--linie); }
+.ws-ta-daten dt { flex: 1 1 auto; min-width: 0; color: var(--text-2); overflow-wrap: break-word; }
+.ws-ta-daten dd { flex: 0 1 auto; max-width: 58%; margin: 0; color: var(--text); text-align: right; overflow-wrap: break-word; font-variant-numeric: tabular-nums; }
+.ws-ta-daten dd .ws-ta-enthalten { align-items: flex-end; }
+.ws-ta-daten .ws-ta-zusatz { font-size: 15px; line-height: 22px; }
+
+@media (max-width: 900px) {
+  .ws-ta-tabelle { display: none; }
+  .ws-ta-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--luecke); align-items: start; }
+}
+@media (max-width: 640px) {
+  .ws-ta-karten { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Hinweise unter dem Vergleich */
+.ws-ta-hinweise { display: grid; gap: var(--abstand-3); max-width: var(--lesen-max); }
+.ws-ta-hinweise p { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--text-2); }
+.ws-ta-hinweise strong { font-weight: 600; color: var(--text); }
+
+/* ---------- Häufige Fragen (details/summary) ---------- */
+.ws-ta-fragen { max-width: var(--lesen-max); border-top: 1px solid var(--linie); }
+.ws-ta-frage { border-bottom: 1px solid var(--linie); }
+.ws-ta-frage-kopf { display: flex; align-items: center; justify-content: space-between; gap: var(--abstand-4); min-height: var(--knopf-hoehe);
+  padding-block: var(--abstand-4); border-radius: var(--radius-eintrag); list-style: none; cursor: pointer;
+  font: 600 18px/26px var(--font-sans); color: var(--text); }
+.ws-ta-frage-kopf::-webkit-details-marker { display: none; }
+.ws-ta-frage-kopf::marker { content: ""; }
+.ws-ta-frage-kopf:hover .ws-ta-frage-text { color: var(--akzent-text); }
+.ws-ta-frage-text { min-width: 0; overflow-wrap: break-word; }
+.ws-ta-frage-symbol { color: var(--text-2); transition: transform var(--dauer-kurz) ease; }
+.ws-ta-frage[open] .ws-ta-frage-symbol { transform: rotate(180deg); }
+.ws-ta-antwort { display: grid; gap: var(--abstand-3); padding: 0 calc(var(--symbol) + var(--abstand-4)) var(--abstand-6) 0; }
+.ws-ta-antwort p { margin: 0; font: 400 16px/26px var(--font-sans); color: var(--text); }
+
+@media (max-width: 520px) {
+  .ws-ta-frage-kopf { font-size: 16px; line-height: 24px; }
+  .ws-ta-antwort { padding-right: 0; }
+}
+
+/* Kontrastmodus: Karten ohne Rand bekommen eine Linie */
+@media (forced-colors: active) {
+  .ws-ta-karte { outline: 1px solid transparent; }
+}

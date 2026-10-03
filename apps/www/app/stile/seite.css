@@ -149,3 +149,6 @@ main:has(> .ws-band:last-child) + .ws-fuss { margin-top: 0; }
 
 /* Zeitstrahl: Titel der Marken-Skala fließend bis 900 px */
 .ws-zs-titel { font-size: clamp(28px, 2.6vw + 15px, 52px); line-height: 1.24; color: var(--akzent-text); }
+
+/* Fußzeile: Knopf darf in schmalen Spalten umbrechen (sonst 1 px Überlauf bei 901 px) */
+.ws-fuss-spalte .knopf { max-width: 100%; white-space: normal; text-align: center; }
