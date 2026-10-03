@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "workly-www",
+  "name": "workly",
   "compatibility_date": "2026-10-01",
   "main": "./workers/app.ts",
   "observability": {
@@ -13,14 +13,13 @@
     // Leer lassen, solange keine Turnstile-Schlüssel hinterlegt sind; dann entfällt die Prüfung.
     "TURNSTILE_SITE_KEY": ""
   },
-  // Warteliste: D1 in der EU-Jurisdiktion anlegen mit
-  //   wrangler d1 create workly-warteliste --jurisdiction eu
-  // und die ausgegebene database_id hier eintragen.
+  // Warteliste. Ohne database_id verbindet `wrangler deploy` die Datenbank über ihren Namen
+  // oder legt sie beim ersten Deploy an. Für Speicherung in der EU vorher anlegen:
+  //   pnpm --filter @workly/www exec wrangler d1 create workly-warteliste --jurisdiction eu
   "d1_databases": [
     {
       "binding": "WARTELISTE",
       "database_name": "workly-warteliste",
-      "database_id": "00000000-0000-0000-0000-000000000000",
       "migrations_dir": "migrations"
     }
   ]

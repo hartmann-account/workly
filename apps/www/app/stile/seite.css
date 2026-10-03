@@ -70,8 +70,8 @@ main:focus { outline: none; }
 .ws-fuss-liste { display: grid; gap: var(--abstand-2); margin: 0; padding: 0; list-style: none; }
 .ws-fuss-liste a { display: inline-block; padding-block: 1px; color: var(--text); font: 500 15px/22px var(--font-sans); text-decoration: none; }
 .ws-fuss-liste a:hover { text-decoration: underline; }
-.ws-fuss-unten { margin-top: var(--abstand-12); padding-top: var(--abstand-6); border-top: 1px solid var(--linie); font: 500 13px/18px var(--font-sans); color: var(--text-2); }
-.ws-fuss-unten p { margin: 0; }
+.ws-fuss-unten { margin-top: var(--abstand-12); font: 500 13px/18px var(--font-sans); color: var(--text-2); }
+.ws-fuss-unten p { margin: 0; padding-top: var(--abstand-6); border-top: 1px solid var(--linie); }
 
 @media (max-width: 900px) { .ws-fuss-innen { grid-template-columns: minmax(0, 1fr); gap: var(--abstand-8); } }
 @media (max-width: 640px) { .ws-fuss-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-6); } }
