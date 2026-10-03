@@ -9,8 +9,11 @@
   "scripts": {
     "dev": "pnpm --filter @workly/www dev",
     "build": "pnpm --filter @workly/ui build && pnpm --filter @workly/www build",
-    "deploy": "pnpm --filter @workly/www exec wrangler deploy",
+    "deploy": "wrangler deploy",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
   }
 }

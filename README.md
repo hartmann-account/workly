@@ -21,16 +21,7 @@ Node 22.22 oder neuer, pnpm 10.
 
 ## Auslieferung über Cloudflare Workers Builds
 
-Einstellungen des verbundenen Workers (Settings › Build):
-
-| Feld | Wert |
-| --- | --- |
-| Branch | `main` |
-| Root directory | `/` |
-| Build command | `pnpm run build` |
-| Deploy command | `pnpm run deploy` |
-
-Der Worker heißt `workly` (siehe `apps/www/wrangler.jsonc`); der Name muss mit dem Worker im Dashboard übereinstimmen.
+Jeder Push auf `main` baut und veröffentlicht den Worker `workly`. Workers Builds braucht dafür keine eigenen Einstellungen: Es installiert mit pnpm und führt im Wurzelverzeichnis `npx wrangler deploy` aus. Die Datei `wrangler.jsonc` im Wurzelverzeichnis lässt Wrangler vorher `pnpm run build` ausführen und liefert dann `apps/www/build` aus. Für die Entwicklung gilt `apps/www/wrangler.jsonc`; Name, Variablen und Bindungen müssen in beiden Dateien gleich sein.
 
 Die Warteliste speichert in D1 (Bindung `WARTELISTE`, Datenbank `workly-warteliste`). Für Speicherung in der EU die Datenbank vor dem ersten Deploy anlegen:
 

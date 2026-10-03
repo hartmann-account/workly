@@ -1,0 +1,33 @@
+// Deploy-Konfiguration für Cloudflare Workers Builds.
+// Workers Builds führt im Wurzelverzeichnis `npx wrangler deploy` aus. Diese Datei lässt Wrangler
+// vorher bauen (build.command) und liefert dann den fertigen Build aus apps/www aus.
+// Entwicklung und Bindungen pflegst du in apps/www/wrangler.jsonc; Name, Datum, Variablen und
+// Bindungen müssen in beiden Dateien gleich sein.
+{
+  "name": "workly",
+  "compatibility_date": "2026-10-01",
+  "main": "apps/www/build/server/index.js",
+  "no_bundle": true,
+  "rules": [{ "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }],
+  "build": {
+    "command": "pnpm run build"
+  },
+  "assets": {
+    "directory": "apps/www/build/client",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "TURNSTILE_SITE_KEY": ""
+  },
+  "d1_databases": [
+    {
+      "binding": "WARTELISTE",
+      "database_name": "workly-warteliste",
+      "migrations_dir": "apps/www/migrations"
+    }
+  ]
+}
