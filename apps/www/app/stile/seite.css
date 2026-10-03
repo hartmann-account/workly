@@ -12,7 +12,7 @@ main:focus { outline: none; }
 .ws-abschnitt-flaeche { background: var(--flaeche); }
 .ws-abschnitt-flaeche + .ws-abschnitt,
 .ws-abschnitt + .ws-abschnitt-flaeche { padding-top: var(--abstand-16); }
-.ws-abschnitt-flaeche :is(.karte, .tabelle-karte) { background: var(--grund); }
+.ws-abschnitt-flaeche :is(.karte, .tabelle-karte):not(.ws-bildschirm *) { background: var(--grund); }
 
 .ws-abschnitt-kopf { display: flex; flex-direction: column; align-items: flex-start; gap: var(--abstand-3); max-width: 46em; margin-bottom: var(--abstand-12); }
 .ws-abschnitt-kopf-mitte { align-items: center; margin-inline: auto; text-align: center; }
@@ -123,7 +123,7 @@ main:focus { outline: none; }
 
 /* ---------- Bildschirm: nachgebaute Portal-Ansicht ---------- */
 .ws-bildschirm { display: flex; flex-direction: column; gap: var(--abstand-3); margin: 0; min-width: 0; }
-.ws-bildschirm-flaeche { width: 100%; padding: var(--abstand-5); border: 1px solid var(--linie); border-radius: var(--radius-karte); background: var(--grund); overflow: hidden; pointer-events: none; user-select: none; }
+.ws-bildschirm-flaeche { width: 100%; padding: var(--abstand-5); border: 1px solid var(--linie); border-radius: var(--radius-karte); background: var(--grund); overflow: hidden; isolation: isolate; pointer-events: none; user-select: none; }
 .ws-abschnitt-flaeche .ws-bildschirm-flaeche { border-color: transparent; }
 .ws-bildschirm-text { font: 500 14px/20px var(--font-sans); color: var(--text-2); }
 @media (max-width: 520px) { .ws-bildschirm-flaeche { padding: var(--abstand-3); border-radius: var(--radius-karte-mobil); } }

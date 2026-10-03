@@ -1,0 +1,158 @@
+/* Seite Funktionen (Präfix ws-fu-)
+   Ergänzt bundle.css und seite.css. Nur Tokens; einzige feste Farbe #ffffff auf Verlaufsflächen.
+   Breakpoints wie im Designsystem: 900, 640, 520 px. Abbildungen werden auf schmalen Breiten gekürzt
+   (Klassen ws-fu-weg-…), nicht skaliert. */
+
+/* ---------- Sprungnavigation „Auf dieser Seite“ ---------- */
+.ws-fu-sprung { padding-block: var(--abstand-8); background: var(--flaeche); }
+.ws-fu-sprung-innen { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.ws-fu-sprung-titel { color: var(--text-2); }
+.ws-fu-sprung-liste { display: flex; flex-wrap: wrap; gap: var(--abstand-2); margin: 0; padding: 0; list-style: none; }
+.ws-fu-sprung-link { display: inline-flex; align-items: center; min-height: var(--knopf-hoehe); padding: 0 var(--abstand-4);
+  border-radius: var(--radius-knopf); background: var(--grund); color: var(--text); font: 600 15px/20px var(--font-sans);
+  text-decoration: none; transition: background-color var(--dauer-kurz) ease, color var(--dauer-kurz) ease; }
+.ws-fu-sprung-link:hover { background: var(--akzent-hauch); color: var(--akzent-text); text-decoration: none; }
+.ws-fu-stand { margin: 0; max-width: 46em; font: 500 15px/22px var(--font-sans); color: var(--text-2); }
+
+/* ---------- Modulabschnitte: Kopf und Liste nebeneinander, Abbildung darunter (breit) oder daneben (neben) ---------- */
+.ws-fu-modul > .ws-rahmen { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--abstand-8) var(--abstand-12); align-items: start; }
+.ws-fu-modul .ws-abschnitt-kopf { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+.ws-fu-breit .ws-fu-liste { grid-column: 2; grid-row: 1; align-self: end; }
+.ws-fu-breit .ws-fu-unten { grid-column: 1 / -1; }
+.ws-fu-neben > .ws-rahmen { grid-template-rows: auto 1fr; }
+.ws-fu-neben .ws-fu-liste { grid-column: 1; grid-row: 2; }
+.ws-fu-neben .ws-fu-rechts { grid-column: 2; grid-row: 1 / span 2; }
+
+.ws-fu-liste li { overflow-wrap: break-word; hyphens: auto; }
+.ws-fu-liste kbd, .ws-fu-kuerzel kbd { padding: calc(var(--abstand-1) / 2) var(--abstand-2); color: var(--text); font-size: 13px; line-height: 18px; }
+
+/* ---------- Abbildungen im Rahmen Bildschirm ---------- */
+/* Eigener Stapelkontext: Menüs und Jetzt-Linien der Bausteine liegen nie über der klebenden Kopfleiste. */
+.ws-fu-bild { isolation: isolate; }
+/* Auf grauen Abschnitten macht seite.css Karten weiß; in der Portal-Ansicht bleiben sie grau wie im Portal. */
+.ws-fu-bild .ws-bildschirm-flaeche .karte { background: var(--flaeche); }
+
+/* Heute: Ausschnitt der Zeitleiste 09:00 – 15:00 Uhr, schmal 09:00 – 12:30 Uhr */
+.ws-fu-zl { --ta-von: 9; --ta-bis: 15; }
+@container ta-heute (max-width: 640px) {
+  .ws-fu-zl { --ta-bis: 12.5; }
+  .ws-fu-bild .ws-fu-weg-ta { display: none; }
+}
+
+/* Posteingang: geöffnetes Aktionsmenü an der ersten Zeile, Tasten rechts im Eintrag; die Zeile steht im Zustand Fokus */
+.ws-fu-bild .pe-zeile:has(.ws-fu-sichtbar) { background: var(--flaeche); }
+.ws-fu-bild .pe-aktionen.ws-fu-sichtbar { z-index: 2; opacity: 1; }
+
+/* Aufgaben: zwischen 640 und 900 px Breite drei Spalten ohne waagrechtes Rollen; „Erledigt“ entfällt */
+@container auf-board (max-width: 900px) {
+  .ws-fu-bild .auf-board { grid-auto-columns: minmax(0, 1fr); overflow: visible; }
+  .ws-fu-bild .auf-status-erledigt { display: none; }
+}
+
+/* Kalender: Ausschnitt 08:00 – 14:00 Uhr, Arbeitszeitfenster ab 09:00 Uhr, ohne leere Ganztagszeile */
+.ws-fu-kal { --kal-stunden: 6; --kal-fenster-beginn: 1; --kal-fenster-ende: 10; }
+.ws-fu-kal .kal-ganztag, .ws-fu-kal .kal-achse-ganztag { display: none; }
+.ws-fu-kal .kal-tag-kopf { min-height: var(--abstand-12); }
+
+/* Dokument: erledigter Punkt der Checkliste (Erledigt-Moment in Pink) */
+.ws-fu-haken-an { border-color: transparent; background: var(--verlauf-pink-zugaenglich); color: #ffffff; }
+
+/* Verknüpfungen: Mail und Aufgaben als graue Karten, verknüpfte Objekte darin weiß */
+.ws-fu-verknuepft { display: flex; flex-direction: column; gap: var(--luecke); }
+.ws-fu-verknuepft .karte .dok-verknuepft-eintrag, .ws-fu-verknuepft .karte .pe-chip { background: var(--grund); }
+.ws-fu-mail .pe-lesen-betreff { font-size: 20px; line-height: 26px; }
+.ws-fu-aufgabe { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.ws-fu-aufgabe-kopf { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--abstand-3); }
+.ws-fu-aufgabe-kopf > .pruef { margin-top: calc(var(--abstand-1) / 2); }
+.ws-fu-aufgabe-meta { margin: var(--abstand-1) 0 0; font: 500 13px/18px var(--font-sans); color: var(--text-2); }
+.ws-fu-geloescht .dok-verknuepft-titel { color: var(--text-2); }
+
+/* Befehlszeile: statisch über abgedunkeltem Grund statt als modaler Dialog */
+.ws-fu-buehne { padding: var(--abstand-8) var(--abstand-6); border-radius: var(--radius-mittel); background: var(--abdunklung); }
+.ws-fu-bild .ws-fu-bz { position: relative; inset: auto; width: 100%; max-width: var(--lesen-max); max-height: none; margin: 0 auto; }
+.ws-fu-bz-eingabe { display: flex; align-items: center; height: auto; padding-block: var(--abstand-4); }
+.ws-fu-gewaehlt { background: var(--akzent-hauch); }
+@media (max-width: 640px) {
+  .ws-fu-gewaehlt .bz-text { flex-direction: column; align-items: flex-start; gap: 0; }
+  .ws-fu-gewaehlt .ws-fu-trenner { display: none; }
+}
+
+/* Fokus: Start und laufende Sitzung nebeneinander */
+.ws-fu-fokus-bild { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--luecke); align-items: start; }
+.ws-fu-radio { border-radius: var(--radius-rund); }
+.ws-fu-radio-an { border-color: transparent; background: var(--verlauf-blau-zugaenglich); }
+.ws-fu-radio-an::after { content: ""; width: var(--abstand-2); height: var(--abstand-2); border-radius: var(--radius-rund); background: var(--text-auf-akzent); }
+
+/* Gekürzte Abbildungen auf dem Telefon */
+@media (max-width: 900px) {
+  .ws-fu-fokus-bild { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .ws-fu-bild .ws-fu-weg-mobil, .ws-fu-bild .ws-fu-weg-schmal, .ws-fu-menue kbd { display: none; }
+}
+@media (max-width: 520px) {
+  /* Posteingang: vier Zeilen; Platz darunter, damit das geöffnete Menü ganz sichtbar bleibt */
+  .ws-fu-bild .ws-fu-weg-pe { display: none; }
+  .ws-fu-bild .pe-posteingang { padding-bottom: var(--abstand-8); }
+  .ws-fu-buehne { padding: var(--abstand-4) var(--abstand-2); }
+}
+
+/* ---------- Tastenkürzel: Tabelle, unter 640 px zweispaltige Liste ---------- */
+.ws-fu-kuerzel .tabelle table { font-size: 15px; line-height: 22px; }
+.ws-fu-kuerzel .tabelle tbody th { width: 40%; font-size: 15px; line-height: 22px; font-weight: 500; }
+.ws-fu-kuerzel .tabelle tbody tr.ws-fu-kuerzel-gruppe:hover { background: transparent; }
+.ws-fu-kuerzel .tabelle .ws-fu-kuerzel-gruppe > th { padding-top: var(--abstand-5); font: 600 11px/14px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); }
+.ws-fu-kuerzel-karten .tabelle-karte { background: var(--grund); }
+.ws-fu-kuerzel-daten { align-items: center; row-gap: var(--abstand-3); font-size: 15px; line-height: 22px; }
+.ws-fu-kuerzel-daten dt { color: var(--text); }
+.ws-fu-kuerzel-daten dd { text-align: left; }
+
+/* ---------- Fokus und Wohlbefinden: Grundsätze und Beispielsätze ---------- */
+.ws-fu-fokus-unten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-8) var(--abstand-12); }
+.ws-fu-fokus-spalte { display: flex; flex-direction: column; gap: var(--abstand-5); min-width: 0; }
+.ws-fu-h3 { margin: 0; font: 700 24px/32px var(--font-sans); color: var(--text); }
+.ws-fu-grundsaetze { display: flex; flex-direction: column; gap: var(--abstand-5); margin: 0; padding: 0; list-style: none; }
+.ws-fu-grundsaetze > li { display: flex; flex-direction: column; gap: var(--abstand-1); padding-top: var(--abstand-4); border-top: 1px solid var(--linie); }
+.ws-fu-grundsatz-titel { margin: 0; font: 600 17px/24px var(--font-sans); color: var(--text); }
+.ws-fu-grundsatz-text { margin: 0; font: 500 15px/24px var(--font-sans); color: var(--text-2); }
+.ws-fu-saetze { display: flex; flex-direction: column; gap: var(--luecke); margin: 0; padding: 0; list-style: none; }
+.ws-fu-satz { display: flex; flex-direction: column; gap: var(--abstand-2); }
+.ws-fu-satz-text { margin: 0; font: 600 18px/26px var(--font-sans); color: var(--text); }
+.ws-fu-satz-quelle { margin: 0; font: 500 15px/22px var(--font-sans); color: var(--text-2); }
+
+/* ---------- Umzug, Geräte und Konto ---------- */
+.ws-fu-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--luecke); margin: 0; padding: 0; list-style: none; }
+.ws-fu-karte { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.ws-fu-karte-titel { display: flex; align-items: center; gap: var(--abstand-2); margin: 0; font: 700 20px/26px var(--font-sans); color: var(--text); }
+.ws-fu-karte-titel .symbol { color: var(--text-2); }
+
+/* ---------- Was workly nicht macht ---------- */
+.ws-fu-grenzen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--abstand-6) var(--abstand-8); margin: 0; padding: 0; list-style: none; }
+.ws-fu-grenzen > li { display: flex; flex-direction: column; gap: var(--abstand-2); min-width: 0; padding-top: var(--abstand-4); border-top: 1px solid var(--linie); }
+.ws-fu-grenze-titel { margin: 0; font: 600 18px/24px var(--font-sans); color: var(--text); }
+.ws-fu-grenze-text { margin: 0; font: 500 15px/24px var(--font-sans); color: var(--text-2); }
+
+/* ---------- Umbrüche ---------- */
+@media (max-width: 900px) {
+  .ws-fu-modul > .ws-rahmen { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: var(--abstand-6); }
+  .ws-fu-modul .ws-abschnitt-kopf, .ws-fu-modul .ws-fu-liste, .ws-fu-modul .ws-fu-unten, .ws-fu-modul .ws-fu-rechts { grid-column: 1; grid-row: auto; }
+  .ws-fu-breit .ws-fu-liste { align-self: start; }
+  .ws-fu-fokus-unten { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .ws-fu-sprung { padding-block: var(--abstand-6); }
+  .ws-fu-sprung-liste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ws-fu-sprung-link { display: flex; width: 100%; height: 100%; padding: var(--abstand-2) var(--abstand-3); }
+  .ws-fu-h3 { font-size: 22px; line-height: 28px; }
+}
+
+/* Kontrastmodus: Flächen ohne Rand bekommen eine Linie */
+@media (forced-colors: active) {
+  .ws-fu-sprung, .ws-fu-sprung-link, .ws-fu-karte, .ws-fu-satz, .ws-fu-buehne { outline: 1px solid transparent; }
+}
+
+/* Posteingang-Abbildung am Telefon: offenes Aktionsmenü verdeckt sonst die Absender */
+@media (max-width: 640px) {
+  .ws-fu-menue { display: none; }
+  .ws-fu-bild .pe-mehr.ist-aktiv { background: transparent; color: var(--text-2); }
+}
