@@ -1,0 +1,37 @@
+/* Rechtsseiten Datenschutz und Impressum (Präfix ws-re-)
+   Ergänzt ws-seitenkopf und ws-text aus seite.css. Nur Tokens aus tokens.css. */
+
+/* Hinweis „Entwurf“ über dem Text, so breit wie der Lesetext */
+.ws-re-entwurf { max-width: var(--lesen-max); margin-bottom: var(--abstand-8); }
+
+/* Lange Komposita und Gesetzesnamen brechen um, statt die Seite zu verbreitern */
+.ws-re-text { overflow-wrap: break-word; hyphens: auto; }
+.ws-re-text h2 { text-wrap: balance; }
+.ws-re-text > section:first-child > h2 { margin-top: 0; }
+.ws-re-text > section > * + * { margin-top: var(--abstand-4); }
+.ws-re-text code { font: 400 15px/26px var(--font-mono); overflow-wrap: anywhere; }
+.ws-re-text ul { list-style: disc; }
+.ws-re-text li::marker { color: var(--text-2); }
+/* „E-Mail“ bleibt zusammen; der Bindestrich wäre sonst eine Umbruchstelle nach einem Buchstaben */
+.ws-re-ganz { white-space: nowrap; }
+
+/* Platzhalter für Angaben, die vor der Veröffentlichung ergänzt werden; die eckigen Klammern tragen die Bedeutung */
+.ws-re-platzhalter { padding-inline: calc(var(--abstand-1) / 2); border-radius: var(--radius-tag); background: var(--warn-flaeche); color: var(--warn-text);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* Anbieterangaben im Impressum: Datenliste in Lesegröße */
+.ws-re-daten { font: 400 16px/26px var(--font-sans); }
+
+.ws-re-stand { margin-top: var(--abstand-12); }
+
+@media (max-width: 520px) {
+  .ws-re-entwurf { margin-bottom: var(--abstand-6); }
+  .ws-re-text h2 { margin-top: var(--abstand-8); font-size: 22px; line-height: 28px; }
+  .ws-re-daten { gap: 0; }
+  .ws-re-daten dd { margin-bottom: var(--abstand-3); }
+  .ws-re-stand { margin-top: var(--abstand-8); }
+}
+
+@media (forced-colors: active) {
+  .ws-re-platzhalter { outline: 1px solid transparent; }
+}
